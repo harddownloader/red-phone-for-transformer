@@ -1,0 +1,36 @@
+@import vars
+
+.cursor 
+  font-size 12px
+  background-color blackColor
+  color blackColor
+  position relative
+  opacity 0
+  height 1.5em
+  width 3px
+  max-width 3px
+  overflow hidden
+  text-indent -5px
+  display inline-block
+  text-decoration blink
+
+.cursor.cursorEnabled 
+  opacity 0.5
+  animation blinker 1s linear infinite
+
+#terminal 
+  cursor text
+
+#writer
+  font-size: 14px
+  line-height: 20px;
+  color: lighten(blackColor, 10%)
+
+#getter
+  width: 80%
+  margin-left: 20px;
+
+@keyframes blinker {
+  50% { opacity: 0.0; }
+}
+  

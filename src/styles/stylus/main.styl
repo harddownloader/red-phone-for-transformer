@@ -1,0 +1,246 @@
+// основной файл стилей
+@import style
+//adv classes
+@import animations
+// styles for creating an emphasis of the user's attention on printing text
+@import chat_akcent
+// animation caret
+@import chatingCaret
+// для отображения талицы(которую может выдать бот к ответу)
+@import gridTable
+//variables
+@import vars
+
+// fonts
+@font-face{
+  font-family: "SFUIDisplay"
+  font-style: bold
+  src: url('../../assets/fonts/SFUIDisplay-Bold.ttf') format("truetype")
+}
+
+@font-face{
+  font-family: 'Calibri'
+  font-style: normal
+  src: url('../../assets/fonts/Calibri-Regular.ttf')
+}
+
+body 
+  font-family: 'Calibri'
+  background-color: #fff
+  margin: 0
+
+.display_container
+  width: 100%
+  margin: 0 auto
+  height: 100%
+  border: 1px solid ThemeRed;
+  .chatHeaderWrapper
+    .chatTopHeaderContainer
+      .chatTopHeaderBG
+        height 0px
+    .chatHeader
+      display: flex
+      justify-content: normal
+      background-size: 100%
+      padding 0px
+      border-radius: 4px; // чтобы не вылазил краешек за "линию телефона"
+      margin: 0px 2px; // чтобы не вылазил за рамки узкой телефонной рамочки
+      .chatHeader__main
+        width 100%
+        height: 100%
+        .headAndDate
+          height: 50%
+          display: flex
+          align-items: center
+          .chatHeader__back_btn
+            margin: 5px
+          .chatHeader__logo
+            margin: 5px
+          .headAndDate__title_wrap
+            height: 100%
+            display: grid
+            .headAndDate__head
+              //
+            .headAndDate__sub_title
+              color darken(backgroundOptBtns, 30)
+              font-size: 11px
+              line-height: 1.5vh;
+          .headAndDate__head
+            text-transform: capitalize
+            font-size: 15px
+            line-height: 13px // чтобы магнитило вниз
+            // margin-right: 5px
+            // margin-left: 15px
+            // color darken(backgroundOptBtns, 30)
+            color #000
+          // .headAndDate__date
+          //   font-size: 11px
+          //   line-height: 13px // чтобы магнитило вниз
+          //   // color: ThemeBlue
+          //   color ThemeRed
+        .titleWrap
+          height: 50%
+          display: flex
+          align-items: center
+          // .titleWrap__circle_wrap
+          //   height: 100%;
+          //   display: flex;
+          //   align-items: center;
+          //   margin-bottom: 2px;
+          //   .titleWrap__circle
+          //     background: darken(backgroundOptBtns, 30)
+          //     border-radius: 50%
+          //     display: inline-block
+
+              
+      // .chatHeader__adv.chatHeader__icons
+      //   display: flex
+      //   align-items: center
+      //   justify-content: space-evenly
+      //   width 20%
+      //   img
+      //     width 12px
+        
+
+.chatTopHeaderContainer
+  .chatTopHeaderBG
+    height: 40%
+  .chatTopHeader
+    height: 60%
+    display: flex
+    justify-content: space-between
+    .topHeaderItem.topHeaderTimeWrap
+      margin-left: 8%
+      padding-top: 1%
+      .topHeaderTime
+        font-size: 10px
+        font-family: 'SFUIDisplay'
+        color: blackColor
+    .topHeaderItem.topHeaderNetworkWrap
+      margin-right: 2% // .topHeaderNetwork{padding-top: 1%}
+  .chatTopHeaderBG, .chatTopHeader
+    // smt
+
+
+.chatContentWrapper
+  padding: 20px
+  .date_dialogs
+    text-align: center
+    font-size: 11px
+    margin-bottom: 15px
+    .date_dialogs_item
+      margin: 0px
+      color: darken(mainGrayColor, 30)
+  .options_wrapper
+    margin-bottom: 20px
+    .chat_options
+      .optin_item
+        width: 100%
+        button.option_btn
+          margin: 2px 0px
+          background: #f5f5f5
+          border: none
+          color: blackColor
+          transition: all 0.5s
+          width: auto
+          padding: 8px 15px
+          border-radius: 8px
+          font-family: 'Calibri';
+          font-weight: 400
+          .opacity05.act_btn
+            background: darken(backgroundOptBtns, 30)
+          .opacity05
+            opacity: 0.5
+            background: darken(backgroundOptBtns, 30) !important
+
+
+.display_container
+  .hr_line
+    hr
+      margin: 0px
+      z-index: -99
+      background-color: darken(backgroundOptBtns, 30)
+      border: none;
+      height: 2px;
+
+.chatSend{
+  height: 48px
+  .footer_bg{
+    height: 20%
+    background: #fff
+  }
+  .chatSend__TextAndSend{
+    position relative
+    height: 80%
+  }
+  .sendText{
+    resize: none
+    display: block
+    border: 0
+    border-radius: 0px 0px 20px 20px
+    background: rgba(0,0,0,0);
+    padding-top: 0px
+    min-height: 30px
+    overflow: hidden
+    padding-left: 20px
+    font-size: 12px
+    color: darken(mainGrayColor, 60) // #6f6f6f
+    caret-color: blackColor
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+  }
+  #send-message{
+    align-items: baseline
+    display: flex
+    justify-content: center
+    position: absolute;
+    top: 0;
+    right: 4%;
+    img{
+      width: 1.7vh;
+      margin: 5px
+      margin-top: 0px;
+    }
+  }
+}
+
+.wrapper_phone
+  margin: 5% 0px; // отступы у анимации от краев экрана
+  z-index: 10000;
+  .phone_display_wrapper
+    z-index: 10000;
+    // background: url('../../assets/img/bg/bgRedIphone2whiteUrolki2.svg')
+    // background-size: 100% 100%
+    .phone_display
+      border: 1px solid ThemeRed
+      border-radius: 15px;
+      background-color: #fff
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 
+  /* Retina-specific stuff here */
+  .wrapper_phone
+    .phone_display_wrapper
+      background: url('../../assets/img/bg/redPhone@3x.png')
+      background-size: 100% 100%;
+
+.phone_display_wrapper
+  //фиксируем положение родителя, для того чтобы расчеты отступов дочернего отталкивались от него, а не от всей веб-страницы
+  overflow: hidden
+
+// серый фон модального окна
+#overlay
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1000;
+  background: rgba(72, 72, 72, 0.5);
+
+// медиа запросы
+@import sizes
