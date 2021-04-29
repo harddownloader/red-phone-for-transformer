@@ -336,9 +336,12 @@ export class BuildPhone {
       sumMarginsTopBottom =
         parseInt(this.marginsForPhoneDisplay.marginTop) +
         parseInt(this.marginsForPhoneDisplay.marginBottom),
-      sumHeaderFooterMargins =
-        chatSendHeight + topHeaderHeight + sumMarginsTopBottom,
-      chatContentHeight = height_ - sumHeaderFooterMargins
+      sumPaddingsTopBottom =
+        parseInt(this.paddingsForPhoneDisplay.paddingTop) +
+        parseInt(this.paddingsForPhoneDisplay.paddingBottom),
+      sumHeaderFooterOffsets =
+        chatSendHeight + topHeaderHeight + sumMarginsTopBottom + sumPaddingsTopBottom,
+      chatContentHeight = height_ - sumHeaderFooterOffsets
 
     const parameters_elements = {
       chatSendHeight: chatSendHeight,
