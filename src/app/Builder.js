@@ -155,11 +155,11 @@ export class BuildPhone {
 
     const cH = tH - tHC
     document.querySelector('.chatHeader').style.height = cH + 'px'
-    document.querySelector('.chatSend').style.height =
-      new ConvertTools().convert_percents_to_px(
-        configJS['chatSendHeightPercentage'],
-        this.getHW().height
-      ) + 'px'
+    // document.querySelector('.chatSend').style.height =
+    //   new ConvertTools().convert_percents_to_px(
+    //     configJS['chatSendHeightPercentage'],
+    //     this.getHW().height
+    //   ) + 'px'
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // на пока просто не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
@@ -263,11 +263,11 @@ export class BuildPhone {
     const cH = tH - tHC
     document.querySelector('.chatHeader').style.height = cH + 'px'
 
-    document.querySelector('.chatSend').style.height =
-      new ConvertTools().convert_percents_to_px(
-        configJS['chatSendHeightPercentage'],
-        this.getHW().height
-      ) + 'px'
+    // document.querySelector('.chatSend').style.height =
+    //   new ConvertTools().convert_percents_to_px(
+    //     configJS['chatSendHeightPercentage'],
+    //     this.getHW().height
+    //   ) + 'px'
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'

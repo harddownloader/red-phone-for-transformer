@@ -98,14 +98,63 @@ body .chatContent .chat-column.company > .item > .chat-icon
         
 body
   .chatContent
-    // background: darken(backgroundOptBtns, 30)
+    background: #eff3f6
     .chat-column
       .item
         .chat-icon
           .chat__app-icon
             font-size: 2vh
             color: ThemeRed
-            padding: 1px; 
+            padding: 1px;
+
+#chat-ui-input
+  color: #aaa;
+  width: 100%;
+  height: 3em;
+  min-height: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  background-color: #eef3f6;
+  padding-bottom: 1%;
+  .chatSend{
+    height: 48px
+    .chatSend__TextAndSend{
+      position relative
+      height: 80%
+      .sendText-wrap{
+        position: absolute;
+      }
+    }
+    .sendText{
+      resize: none
+      display: block
+      border: 0
+      overflow: hidden
+      color: darken(mainGrayColor, 60)
+      caret-color: #000
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  
+.bottom-ui{
+  height: 1em;
+  width: 100%;
+  background: #eff3f6;
+  display: flex;
+  justify-content: center;
+  .bottom-ui__phone_line{
+    height: 0.3em;
+    background: #000;
+    width: 35%;
+    border-radius: 12px;
+    margin: 5px 0px;
+  }
+}
 
 //scroll
 .simplebar-track.simplebar-vertical
