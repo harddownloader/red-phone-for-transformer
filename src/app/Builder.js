@@ -371,8 +371,13 @@ export class BuildPhone {
       paddingRight = paddingsParam.paddingRight,
       paddingBottom = paddingsParam.paddingBottom,
       paddingLeft = paddingsParam.paddingLeft
-    const SumPaddingsLeftRight = paddingLeft + paddingRight
-    const SumPaddingsTopBottom = paddingTop + paddingBottom // 0 + 10% of img in px
+
+      
+    // const SumPaddingsLeftRight = paddingLeft + paddingRight
+    // const SumPaddingsTopBottom = paddingTop + paddingBottom
+    // поставили border-box, теперь не нужно высчитывать с paddings, поэтому ставим их по 0м
+    const SumPaddingsLeftRight = 0
+    const SumPaddingsTopBottom = 0
 
     const PDHeight = height - SumMarginsTopBottom - SumPaddingsTopBottom
     const PDWidth = widht - SumMarginsLeftRight - SumPaddingsLeftRight
