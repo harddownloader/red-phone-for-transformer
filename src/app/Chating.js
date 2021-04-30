@@ -426,13 +426,23 @@ export class Chating {
         } else {
           let getHeightTextInINput = document.querySelector('#writer')
             .offsetHeight
+          console.log('getHeightTextInINput', getHeightTextInINput)
           let getHeightTextInINputLasted = localStorage.getItem(
             'textHeigthForDetectNewLine'
           )
+
+          const getterWidth = document.querySelector('#getter').offsetWidth
+          const setterWidth = document.querySelector('#writer').offsetWidth
+
+
+          
           if (
-            getHeightTextInINput != getHeightTextInINputLasted &&
-            getHeightTextInINput > getHeightTextInINputLasted
+            // Number(getHeightTextInINput) != Number(getHeightTextInINputLasted) &&
+            // Number(getHeightTextInINput) > Number(getHeightTextInINputLasted)
+            (setterWidth + 20) > getterWidth
           ) {
+            console.log('setter', document.querySelector('#setter').value)
+            // debugger
             let raznica =
               Number(getHeightTextInINput) - Number(getHeightTextInINputLasted)
             let lineHeigthThisLine = 20
@@ -447,7 +457,23 @@ export class Chating {
               'textHeigthForDetectNewLine__numberCounterStartingThirdLine'
             )
 
-            if (raznica > otlichitelnoeChislo && countLocalStorage3 == '0') {
+            let CounerForRmSymbolsStr = Number(
+              localStorage.getItem(
+                'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
+              )
+            )
+            let savedTxtInField = document.querySelector('#writer')
+                .textContent
+            let obrazanayaSrokaPoSimwoly = savedTxtInField.slice(
+              CounerForRmSymbolsStr
+            )
+            console.log('obrazanayaSrokaPoSimwoly' , obrazanayaSrokaPoSimwoly)
+            console.log('то что нужно', obrazanayaSrokaPoSimwoly.substring(1))
+            this.setForSetterOnly(obrazanayaSrokaPoSimwoly.substring(1))
+            this.setForWriter()
+
+            if (raznica > otlichitelnoeChislo && countLocalStorage3 == '0' && false) {
+              
               // то это 3й цикл( так как на 1м 2числа равны,2м разница около 20, 3м около 40)
               let CounerForRmSymbolsStr = Number(
                 localStorage.getItem(
@@ -460,6 +486,12 @@ export class Chating {
               let obrazanayaSrokaPoSimwoly = savedTxtInField.slice(
                 CounerForRmSymbolsStr
               )
+              console.log('obrazanayaSrokaPoSimwoly' , obrazanayaSrokaPoSimwoly)
+              console.log('то что нужно', obrazanayaSrokaPoSimwoly.substring(1))
+              this.setForSetterOnly(obrazanayaSrokaPoSimwoly.substring(1))
+              this.setForWriter()
+              
+              /*
               // обрезаем строку , по символу , который мы запомнили
               // то что получилось режим с общим предложением , чтобы получить 1ю часть предложения(до обрезки части предложения)
               // после мы находим послений пробел в этой части и то ,что за ним (т.е. кусок слова , об которое мы поделили предложение на 2 части в 1й раз)
@@ -483,7 +515,7 @@ export class Chating {
               localStorage.setItem(
                 'textHeigthForDetectNewLine__numberCounterStartingThirdLine',
                 '1'
-              )
+              )*/
             } else if (
               raznica > lineHeigthAndPOGRESHNOST &&
               countLocalStorage2 == '0'

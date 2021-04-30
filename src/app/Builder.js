@@ -191,12 +191,12 @@ export class BuildPhone {
       '.ChatAkcent__FooterOnly'
     ).style.borderRadius = borderRadius
 
-    document.querySelector(
-      '.hr_line'
-    ).style.marginLeft = this.hrLineMargins.marginLeft
-    document.querySelector(
-      '.hr_line'
-    ).style.marginRight = this.hrLineMargins.marginRight
+    // document.querySelector(
+    //   '.hr_line'
+    // ).style.marginLeft = this.hrLineMargins.marginLeft
+    // document.querySelector(
+    //   '.hr_line'
+    // ).style.marginRight = this.hrLineMargins.marginRight
   }
 
   /**
@@ -301,12 +301,12 @@ export class BuildPhone {
       '.ChatAkcent__FooterOnly'
     ).style.borderRadius = borderRadius
 
-    document.querySelector(
-      '.hr_line'
-    ).style.marginLeft = this.hrLineMargins.marginLeft
-    document.querySelector(
-      '.hr_line'
-    ).style.marginRight = this.hrLineMargins.marginRight
+    // document.querySelector(
+    //   '.hr_line'
+    // ).style.marginLeft = this.hrLineMargins.marginLeft
+    // document.querySelector(
+    //   '.hr_line'
+    // ).style.marginRight = this.hrLineMargins.marginRight
   }
 
   /**
