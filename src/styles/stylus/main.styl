@@ -24,6 +24,10 @@
   src: url('../../assets/fonts/Calibri-Regular.ttf')
 }
 
+*,:after,:before {
+  box-sizing: border-box
+}
+
 body 
   font-family: 'Calibri'
   background-color: #fff
@@ -36,9 +40,11 @@ body
   border: 1px solid ThemeRed;
   .chatHeaderWrapper
     .chatTopHeaderContainer
+      height: 50%
       .chatTopHeaderBG
         height 0px
     .chatHeader
+      height: 50%
       display: flex
       justify-content: normal
       padding 0px
@@ -56,8 +62,8 @@ body
           .chatHeader__logo
             margin: 0px 5px 0px 15px
           .headAndDate__title_wrap
-            height: 100%
-            display: grid
+            // height: 100%
+            // display: grid
             .headAndDate__head
               //
             .headAndDate__sub_title
@@ -74,8 +80,6 @@ body
             color #000
 
 .chatTopHeaderContainer
-  .chatTopHeaderBG
-    height: 40%
   .chatTopHeader
     height: 60%
     display: flex
@@ -187,7 +191,6 @@ body
     // background: url('../../assets/img/bg/bgRedIphone2whiteUrolki2.svg')
     // background-size: 100% 100%
     .phone_display
-      box-sizing: border-box;
       border: 1px solid ThemeRed
       border-radius: 15px;
       background-color: #fff

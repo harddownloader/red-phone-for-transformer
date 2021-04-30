@@ -31,10 +31,10 @@ export class BuildPhone {
     }
 
     this.chatHeaderWrapperHeight = this.displayElements().topHeaderHeight
-    this.chatTopHeaderContainerHeight = new ConvertTools().convert_percents_to_px(
-      configJS['chatTopHeaderContainerPercentage'],
-      this.getHW().height
-    )
+    // this.chatTopHeaderContainerHeight = new ConvertTools().convert_percents_to_px(
+    //   configJS['chatTopHeaderContainerPercentage'],
+    //   this.getHW().height
+    // )
     this.chatContentHeight = this.displayElements().chatContentHeight // он же и max-height
 
     this.chatHeaderWrapperOtricatelnueMargins = {
@@ -90,8 +90,8 @@ export class BuildPhone {
     document.querySelector('.phone_display_wrapper').style.width = '100%'
     document.querySelector('.phone_display_wrapper').style.height = '100%'
 
-    document.querySelector('.chatTopHeaderContainer').style.height =
-      this.chatTopHeaderContainerHeight + 'px' // '0px'
+    // document.querySelector('.chatTopHeaderContainer').style.height =
+    //   this.chatTopHeaderContainerHeight + 'px' // '0px'
 
     document.querySelector('.phone_display').style.width =
       this.phoneDisplayWidth + 'px'
@@ -147,14 +147,14 @@ export class BuildPhone {
       '.chatHeaderWrapper'
     ).style.marginRight = this.chatHeaderWrapperOtricatelnueMargins.marginRight
 
-    const tH = this.displayElements().topHeaderHeight
-    const tHC = new ConvertTools().convert_percents_to_px(
-      configJS['chatTopHeaderContainerPercentage'],
-      this.getHW().height
-    )
+    // const tH = this.displayElements().topHeaderHeight
+    // const tHC = new ConvertTools().convert_percents_to_px(
+    //   configJS['chatTopHeaderContainerPercentage'],
+    //   this.getHW().height
+    // )
 
-    const cH = tH - tHC
-    document.querySelector('.chatHeader').style.height = cH + 'px'
+    // const cH = tH - tHC
+    // document.querySelector('.chatHeader').style.height = cH + 'px'
     // document.querySelector('.chatSend').style.height =
     //   new ConvertTools().convert_percents_to_px(
     //     configJS['chatSendHeightPercentage'],
@@ -212,11 +212,11 @@ export class BuildPhone {
     document.querySelector('#wrapper_phone').style.height =
       this.getHW().height + 'px'
 
-    document.querySelector('.chatTopHeaderContainer').style.height =
-      new ConvertTools().convert_percents_to_px(
-        configJS['chatTopHeaderContainerPercentage'],
-        this.getHW().height
-      ) + 'px' // '0px'
+    // document.querySelector('.chatTopHeaderContainer').style.height =
+    //   new ConvertTools().convert_percents_to_px(
+    //     configJS['chatTopHeaderContainerPercentage'],
+    //     this.getHW().height
+    //   ) + 'px' // '0px'
 
     document.querySelector('.phone_display').style.height =
       this.phone_display().height + 'px'
@@ -254,14 +254,14 @@ export class BuildPhone {
     ).style.marginRight = this.phone_display().margins.marginRight.toString()
 
     // это тоже нормальный варинат document.querySelector('.chatHeader').style.height = new ConvertTools().convert_percents_to_px(configJS['chatHeaderHeightPercentage'], this.getHW().height) + 'px'
-    const tH = this.displayElements().topHeaderHeight
-    const tHC = new ConvertTools().convert_percents_to_px(
-      configJS['chatTopHeaderContainerPercentage'],
-      this.getHW().height
-    )
+    // const tH = this.displayElements().topHeaderHeight
+    // const tHC = new ConvertTools().convert_percents_to_px(
+    //   configJS['chatTopHeaderContainerPercentage'],
+    //   this.getHW().height
+    // )
 
-    const cH = tH - tHC
-    document.querySelector('.chatHeader').style.height = cH + 'px'
+    // const cH = tH - tHC
+    // document.querySelector('.chatHeader').style.height = cH + 'px'
 
     // document.querySelector('.chatSend').style.height =
     //   new ConvertTools().convert_percents_to_px(
