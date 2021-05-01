@@ -426,7 +426,7 @@ export class Chating {
         } else {
           let getHeightTextInINput = document.querySelector('#writer')
             .offsetHeight
-          console.log('getHeightTextInINput', getHeightTextInINput)
+          // console.log('getHeightTextInINput', getHeightTextInINput)
           let getHeightTextInINputLasted = localStorage.getItem(
             'textHeigthForDetectNewLine'
           )
@@ -441,7 +441,7 @@ export class Chating {
             // Number(getHeightTextInINput) > Number(getHeightTextInINputLasted)
             (setterWidth + 20) > getterWidth
           ) {
-            console.log('setter', document.querySelector('#setter').value)
+            // console.log('setter', document.querySelector('#setter').value)
             // debugger
             let raznica =
               Number(getHeightTextInINput) - Number(getHeightTextInINputLasted)
@@ -467,8 +467,8 @@ export class Chating {
             let obrazanayaSrokaPoSimwoly = savedTxtInField.slice(
               CounerForRmSymbolsStr
             )
-            console.log('obrazanayaSrokaPoSimwoly' , obrazanayaSrokaPoSimwoly)
-            console.log('то что нужно', obrazanayaSrokaPoSimwoly.substring(1))
+            // console.log('obrazanayaSrokaPoSimwoly' , obrazanayaSrokaPoSimwoly)
+            // console.log('то что нужно', obrazanayaSrokaPoSimwoly.substring(1))
             this.setForSetterOnly(obrazanayaSrokaPoSimwoly.substring(1))
             this.setForWriter()
 

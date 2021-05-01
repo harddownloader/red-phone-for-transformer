@@ -87,7 +87,7 @@ require('./styles/stylus/main.styl')
           await this.ChangevVisibilityStatus('overlay') // делаем серый фон видным
           await this.closeAnimationEvent(elementID) // ставим событие на закрытие окна анимации
           // await bp.setTimeChating() // ставим заголовочное время диалога
-          //await new Chating().CreateAnimationChating(this.dialogs) // создание анимации переписки
+          // await new Chating().CreateAnimationChating(this.dialogs) // создание анимации переписки
           await new ChatsList().init(bp, this.dialogs) // создание списка чатов
         })
       })

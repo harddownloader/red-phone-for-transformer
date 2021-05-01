@@ -33,6 +33,10 @@ export class ChatsList {
     document.querySelector('.chatContentWrapper').style.display = 'none'
     document.querySelector('#chat-ui-input').style.display = 'none'
     document.querySelector('.bottom-ui').style.display = 'none'
+
+    // ставим пропорции для списка чатов
+    const isChatsList = true
+    this.bp.ResizeActivator(isChatsList)
   }
 
   runTransitionAnimation () {
@@ -46,6 +50,7 @@ export class ChatsList {
 
   destroy () {
     console.log('destroyChatsList')
+    document.querySelector('.chat-list-version').classList.toggle('chat-list-version')
     document.querySelector('.chatContent').classList.toggle('whiteBg')
     document.querySelector('.chatContent').classList.toggle('grayBg')
     document.querySelector('.chats-list').style.display = 'none'
@@ -55,6 +60,10 @@ export class ChatsList {
     document.querySelector('.bottom-ui').style.display = 'flex'
 
     document.querySelector('.sections-app-wrapp').style.display = 'none'
+    document.querySelector('.app-header').style.display = 'none'
+
+    // ставим пропорции для чата
+    this.bp.ResizeActivator()
 
     // start chating...
     this.runChatingAnimation()

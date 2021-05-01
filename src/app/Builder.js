@@ -31,10 +31,7 @@ export class BuildPhone {
     }
 
     this.chatHeaderWrapperHeight = this.displayElements().topHeaderHeight
-    // this.chatTopHeaderContainerHeight = new ConvertTools().convert_percents_to_px(
-    //   configJS['chatTopHeaderContainerPercentage'],
-    //   this.getHW().height
-    // )
+
     this.chatContentHeight = this.displayElements().chatContentHeight // он же и max-height
 
     this.chatHeaderWrapperOtricatelnueMargins = {
@@ -76,9 +73,7 @@ export class BuildPhone {
     document.querySelector(
       '.headAndDate__sub_title'
     ).innerHTML = this.argsForBuilder.headingChat
-    // document.querySelector(
-    //   '.headAndDate__date'
-    // ).innerHTML = this.argsForBuilder.dateTime
+
     document.querySelector(
       '.topHeaderTime'
     ).innerHTML = this.argsForBuilder.clock
@@ -147,20 +142,6 @@ export class BuildPhone {
       '.chatHeaderWrapper'
     ).style.marginRight = this.chatHeaderWrapperOtricatelnueMargins.marginRight
 
-    // const tH = this.displayElements().topHeaderHeight
-    // const tHC = new ConvertTools().convert_percents_to_px(
-    //   configJS['chatTopHeaderContainerPercentage'],
-    //   this.getHW().height
-    // )
-
-    // const cH = tH - tHC
-    // document.querySelector('.chatHeader').style.height = cH + 'px'
-    // document.querySelector('.chatSend').style.height =
-    //   new ConvertTools().convert_percents_to_px(
-    //     configJS['chatSendHeightPercentage'],
-    //     this.getHW().height
-    //   ) + 'px'
-
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // на пока просто не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
     const borderRadius =
@@ -190,13 +171,6 @@ export class BuildPhone {
     document.querySelector(
       '.ChatAkcent__FooterOnly'
     ).style.borderRadius = borderRadius
-
-    // document.querySelector(
-    //   '.hr_line'
-    // ).style.marginLeft = this.hrLineMargins.marginLeft
-    // document.querySelector(
-    //   '.hr_line'
-    // ).style.marginRight = this.hrLineMargins.marginRight
   }
 
   /**
@@ -204,7 +178,7 @@ export class BuildPhone {
    * и проставление их,
    * при срабатывании события ресайза окна браузера
    */
-  ResizeActivator() {
+  ResizeActivator(isChatsList = false) {
     // HEIGHT AND WIDHT
     document.querySelector('#wrapper_phone').style.width =
       this.getHW().width + 'px'
@@ -212,22 +186,16 @@ export class BuildPhone {
     document.querySelector('#wrapper_phone').style.height =
       this.getHW().height + 'px'
 
-    // document.querySelector('.chatTopHeaderContainer').style.height =
-    //   new ConvertTools().convert_percents_to_px(
-    //     configJS['chatTopHeaderContainerPercentage'],
-    //     this.getHW().height
-    //   ) + 'px' // '0px'
-
     document.querySelector('.phone_display').style.height =
       this.phone_display().height + 'px'
     document.querySelector('.phone_display').style.width =
       this.phone_display().width + 'px'
 
     document.querySelector('.chatContent').style.maxHeight =
-      this.displayElements().chatContentHeight + 'px'
+      this.displayElements(isChatsList).chatContentHeight + 'px'
 
     document.querySelector('.chatHeaderWrapper').style.height =
-      this.displayElements().topHeaderHeight + 'px'
+      this.displayElements(isChatsList).topHeaderHeight + 'px'
     // MARGINS
     const display_width_m_top = this.phone_display().margins.marginTop.toString()
     const display_width_m_right = this.phone_display().margins.marginRight.toString()
@@ -249,25 +217,10 @@ export class BuildPhone {
     document.querySelector(
       '.chatHeaderWrapper'
     ).style.marginLeft = this.phone_display().margins.marginLeft.toString()
+
     document.querySelector(
       '.chatHeaderWrapper'
-    ).style.marginRight = this.phone_display().margins.marginRight.toString()
-
-    // это тоже нормальный варинат document.querySelector('.chatHeader').style.height = new ConvertTools().convert_percents_to_px(configJS['chatHeaderHeightPercentage'], this.getHW().height) + 'px'
-    // const tH = this.displayElements().topHeaderHeight
-    // const tHC = new ConvertTools().convert_percents_to_px(
-    //   configJS['chatTopHeaderContainerPercentage'],
-    //   this.getHW().height
-    // )
-
-    // const cH = tH - tHC
-    // document.querySelector('.chatHeader').style.height = cH + 'px'
-
-    // document.querySelector('.chatSend').style.height =
-    //   new ConvertTools().convert_percents_to_px(
-    //     configJS['chatSendHeightPercentage'],
-    //     this.getHW().height
-    //   ) + 'px'
+    ).style.marginRight = this.phone_display(isChatsList).margins.marginRight.toString()
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
@@ -300,13 +253,6 @@ export class BuildPhone {
     document.querySelector(
       '.ChatAkcent__FooterOnly'
     ).style.borderRadius = borderRadius
-
-    // document.querySelector(
-    //   '.hr_line'
-    // ).style.marginLeft = this.hrLineMargins.marginLeft
-    // document.querySelector(
-    //   '.hr_line'
-    // ).style.marginRight = this.hrLineMargins.marginRight
   }
 
   /**
@@ -321,14 +267,25 @@ export class BuildPhone {
   /**
    * возвращает объект с нужными высотами частей анимации
    */
-  displayElements() {
+  displayElements(isChatsList = false) {
+    console.log('displayElements', isChatsList)
     const height_ = this.getHW().height
+
     const topHeaderHeigthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['topHeaderPercentage'],
+        (() => {
+          const needPercentage = isChatsList ? configJS['topHeaderPercentage__chatList'] : configJS['topHeaderPercentage']
+          console.log('needPercentage', needPercentage)
+          return needPercentage
+        })(),
         height_
       ),
       chatSendHeightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['chatSendHeightPercentage'],
+        (() => {
+          const needPercentage = isChatsList ? configJS['chatSendHeightPercentage__chatList'] : configJS['chatSendHeightPercentage']
+          console.log('chatSendHeightPercentage__chatList', needPercentage)
+          return needPercentage
+        })(),
+        // configJS['chatSendHeightPercentage'],
         height_
       ),
       chatSendHeight = chatSendHeightInConfig,
@@ -343,6 +300,7 @@ export class BuildPhone {
         chatSendHeight + topHeaderHeight + sumMarginsTopBottom + sumPaddingsTopBottom,
       chatContentHeight = height_ - sumHeaderFooterOffsets
 
+    console.log('chatSendHeightInConfig', chatSendHeightInConfig)
     const parameters_elements = {
       chatSendHeight: chatSendHeight,
       topHeaderHeight: topHeaderHeight,

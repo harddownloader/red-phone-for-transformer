@@ -1,19 +1,32 @@
 // header
 .app-header.user-options {
+  height: 66%;
   .user-options__options.user-control {
+    height: 50%;
     display: flex;
     justify-content: space-between;
-    margin: 0 10px;
+    margin: 0 20px;
+    align-items: center;
     .user-control__item {
       .user-control__img {
         width: 26px;
       }
+      .user-control__img.more-btn {
+        width: 1em;
+      }
+      .user-control__img.add-contact-btn {
+        width: 2.5em;
+      }
+      .user-control__img.writing-btn {
+        width: 1.5em;
+      }
     }
   }
   .user-options__search {
+    height: calc(50% - 10px);
     width: 100%;
     text-align: center;
-    margin: 10px auto;
+    margin: 5px auto;
     .search-input {
       background: url('../../assets/img/icons_red_phone_transformer_chat_list/search@2x.png') no-repeat scroll 1em 50% #eff3f6;
       background-size: 1.25em;
@@ -29,8 +42,19 @@
   }
 }
 
+.chat-list-version {
+  .display_container {
+    .chatHeaderWrapper {
+      .chatTopHeaderContainer {
+        height: 33%;
+      }
+    }
+  }
+}
+
 // content
 .chats-list {
+  margin: 5px 0px;
   .chat-item.need-item {
     cursor pointer
   }
@@ -41,7 +65,7 @@
     .chat__logo-and-heading {
       display: flex;
       .chat__avatar {
-        height: 60px;
+        height: 55px;
         margin: 5px;
       }
       .chat__heading {
@@ -52,6 +76,7 @@
           margin: 0px;
           text-transform: capitalize;
           font-size: 1em;
+          font-weight: 600;
         }
         .chat__sub_title {
           margin: 0px;
@@ -65,6 +90,7 @@
       .chat__date__time {
         font-size: 1em;
         color: darken(backgroundOptBtns, 30);
+        text-transform: capitalize;
       }
     }
   }

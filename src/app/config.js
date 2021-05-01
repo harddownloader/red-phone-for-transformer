@@ -20,4 +20,8 @@ export default {
 
   ChatAkcentPercentage: 9.1,
   ChatAkcentBorderRadiusPercentage: 10.5,
+
+  // chat list
+  topHeaderPercentage__chatList: 17,
+  chatSendHeightPercentage__chatList: 8
 }
