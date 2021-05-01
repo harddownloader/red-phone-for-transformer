@@ -1,23 +1,27 @@
 @import vars
 
+// top header
+.chatTopHeaderContainer
+  .chatTopHeader
+    height: 60%
+    display: flex
+    justify-content: space-between
+    .topHeaderItem.topHeaderTimeWrap
+      .topHeaderTime
+        font-size: 10px
+        font-family: 'TT Norms Pro Regular'
+        color: blackColor
+        font-weight: 600;
+    .topHeaderItem.topHeaderNetworkWrap
+      //
+
+// header
 body .chatHeader 
   position: relative
   padding: 11px
   padding-left: 40px
 
-.chatSend > #send-message 
-  position: absolute
-  right: 0
-  top: 2px
-  z-index: 2
-  height: 48px
-  line-height: 48px
-  border: 0
-  width: 55px
-  font-size: 20px
-  color: #3699f6
-  text-align: center
-
+// center
 body .chatContent 
   height: 100%
   overflow-y: auto
@@ -97,8 +101,11 @@ body .chatContent .chat-column.company > .item > .chat-icon
   color: #3699f6;
         
 body
+  .chatContent.whiteBg
+    background-color: #fff
+  .chatContent.grayBg
+    background-color: lightGrayColor
   .chatContent
-    background: #eff3f6
     .chat-column
       .item
         .chat-icon
@@ -107,6 +114,7 @@ body
             color: ThemeRed
             padding: 1px;
 
+// footer
 #chat-ui-input
   color: #aaa;
   width: 100%;
@@ -134,17 +142,20 @@ body
       border: 0
       overflow: hidden
       color: darken(mainGrayColor, 60)
+      font-family: 'TT Norms Pro Regular'
       caret-color: #000
       position: absolute;
       top: 0;
       left: 0;
+      line-height: heightInput;
     }
   }
-  
+
+// footer
 .bottom-ui{
   height: 1em;
   width: 100%;
-  background: #eff3f6;
+  background: lightGrayColor;
   display: flex;
   justify-content: center;
   .bottom-ui__phone_line{

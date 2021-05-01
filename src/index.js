@@ -1,5 +1,6 @@
 import { BuildPhone } from './app/Builder' // на постройку самого телефона
-import { Chating } from './app/Chating' // на постройку механики обмена сообщениями
+// import { Chating } from './app/Chating' // на постройку механики обмена сообщениями
+import { ChatsList } from './app/chatsList' // создание списка чатов
 
 // подрубаем стили на stylus-е
 require('./styles/stylus/main.styl')
@@ -85,8 +86,9 @@ require('./styles/stylus/main.styl')
           await this.setNeededOffsetToTopIfPageScrolledBefore()
           await this.ChangevVisibilityStatus('overlay') // делаем серый фон видным
           await this.closeAnimationEvent(elementID) // ставим событие на закрытие окна анимации
-          await bp.setTimeChating() // ставим заголовочное время диалога
-          await new Chating().CreateAnimationChating(this.dialogs) // создание анимации переписки
+          // await bp.setTimeChating() // ставим заголовочное время диалога
+          //await new Chating().CreateAnimationChating(this.dialogs) // создание анимации переписки
+          await new ChatsList().init(bp, this.dialogs) // создание списка чатов
         })
       })
     }

@@ -1,6 +1,8 @@
 // основной файл стилей
 @import style
-//adv classes
+// стили для списка диалогов
+@import chatsList
+// adv classes
 @import animations
 // styles for creating an emphasis of the user's attention on printing text
 @import chat_akcent
@@ -13,15 +15,15 @@
 
 // fonts
 @font-face{
-  font-family: "SFUIDisplay"
-  font-style: bold
-  src: url('../../assets/fonts/SFUIDisplay-Bold.ttf') format("truetype")
+  font-family: 'TT Norms Pro Regular'
+  font-style: normal
+  src: url('../../assets/fonts/TTNormsPro/TTNormsPro-Regular.ttf')
 }
 
 @font-face{
-  font-family: 'Calibri'
+  font-family: 'TT Norms Pro Medium'
   font-style: normal
-  src: url('../../assets/fonts/Calibri-Regular.ttf')
+  src: url('../../assets/fonts/TTNormsPro/TTNormsPro-Medium.ttf')
 }
 
 *,:after,:before {
@@ -29,7 +31,7 @@
 }
 
 body 
-  font-family: 'Calibri'
+  font-family: 'TT Norms Pro Regular'
   background-color: #fff
   margin: 0
 
@@ -79,28 +81,7 @@ body
             text-transform: capitalize
             font-size: 15px
             line-height: 13px // чтобы магнитило вниз
-            // margin-right: 5px
-            // margin-left: 15px
-            // color darken(backgroundOptBtns, 30)
             color #000
-
-.chatTopHeaderContainer
-  .chatTopHeader
-    height: 60%
-    display: flex
-    justify-content: space-between
-    .topHeaderItem.topHeaderTimeWrap
-      // margin-left: 8%
-      // padding-top: 1%
-      .topHeaderTime
-        font-size: 10px
-        font-family: 'SFUIDisplay'
-        color: blackColor
-    .topHeaderItem.topHeaderNetworkWrap
-      // margin-right: 2%
-  .chatTopHeaderBG, .chatTopHeader
-    // smt
-
 
 .chatContentWrapper
   padding: 20px
@@ -125,68 +106,13 @@ body
           width: auto
           padding: 8px 15px
           border-radius: 8px
-          font-family: 'Calibri';
+          font-family: 'TT Norms Pro Regular';
           font-weight: 400
           .opacity05.act_btn
             background: darken(backgroundOptBtns, 30)
           .opacity05
             opacity: 0.5
             background: darken(backgroundOptBtns, 30) !important
-
-
-// .display_container
-//   .hr_line
-//     hr
-//       margin: 0px
-//       z-index: -99
-//       background-color: darken(backgroundOptBtns, 30)
-//       border: none;
-//       height: 2px;
-
-.chatSend{
-  height: 48px
-  .footer_bg{
-    height: 20%
-    background: #fff
-  }
-  .chatSend__TextAndSend{
-    position relative
-    height: 80%
-  }
-  .sendText{
-    resize: none
-    display: block
-    border: 0
-    border-radius: 0px 0px 20px 20px
-    background: rgba(0,0,0,0);
-    padding-top: 0px
-    min-height: 30px
-    overflow: hidden
-    padding-left: 20px
-    font-size: 12px
-    color: darken(mainGrayColor, 60) // #6f6f6f
-    caret-color: blackColor
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: heightInput
-    line-height: heightInput
-    width: 80%;
-  }
-  #send-message{
-    align-items: baseline
-    display: flex
-    justify-content: center
-    position: absolute;
-    top: 0;
-    right: 4%;
-    img{
-      width: 1.7vh;
-      margin: 5px
-      margin-top: 0px;
-    }
-  }
-}
 
 .wrapper_phone
   margin: 5% 0px; // отступы у анимации от краев экрана
