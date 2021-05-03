@@ -19,10 +19,11 @@ export class ChatsList {
     document.querySelector(this.needChatItemId).addEventListener('click', (event) => {
       console.log('click to need item')
 
-      // run animation redirect to chat
-      this.runTransitionAnimation()
+      
       // rm chats list
       this.destroy()
+
+      
     })
     
   }
@@ -41,12 +42,15 @@ export class ChatsList {
 
     //  через время активируем диалог, как буд-то произошел клик
     setTimeout(() => {
-      document.querySelector(this.needChatItemId).click()
+      // document.querySelector(this.needChatItemId).click()
     }, 3000)
   }
 
   runTransitionAnimation () {
     console.log('runAnimation')
+    setTimeout(() => {
+      document.querySelector('.chatContentWrapper').classList.toggle('activeChat')
+    }, 400)
   }
 
   async runChatingAnimation () {
@@ -68,8 +72,13 @@ export class ChatsList {
     document.querySelector('.sections-app-wrapp').style.display = 'none'
     document.querySelector('.app-header').style.display = 'none'
 
+    // run animation redirect to chat
+    this.runTransitionAnimation()
+
     // ставим пропорции для чата
     this.bp.ResizeActivator()
+
+    
 
     // start chating...
     this.runChatingAnimation()

@@ -1,4 +1,241 @@
 // ресайзы
+// перевернутый телефон
+@media (max-height: 375px) {
+    #master-container.red-phone-wrapper {
+    .container_phone {
+      .wrapper_phone {
+        .phone_display_wrapper {
+          .phone_display {
+            .display_container {
+              // header
+              .chatHeaderWrapper {
+                .chatTopHeaderContainer {
+                  padding: 6px 4px 4px 10px;
+                  .chatTopHeaderBG {
+                    // 
+                  }
+                  .chatTopHeader {
+                    .topHeaderItem {
+                      .topHeaderTime {
+                        font-size: 0.3em;
+                      }
+                      .topHeaderNetworkWrap__img {
+                        width: 30px;
+                      }
+                    }
+                  }
+                }
+                .chatHeader {
+                  margin: 0px 6px;
+                  .chatHeader__main {
+                    .headAndDate {
+                      margin-bottom: 5px;
+                      .chatHeader__back_btn {
+                        width: 6px
+                      }
+                      .chatHeader__logo {
+                        width: 17px;
+                        margin: 0px 2px 0px 6px;
+                      }
+                      .headAndDate__title_wrap {
+                        line-height: 0.5em;
+                        .headAndDate__head {
+                          font-size: 0.3em;
+                          line-height: 0.3em;
+                        }
+                        .headAndDate__arrow {
+                          width: 0.3em;
+                          margin-left: 2px;
+                        }
+                        .headAndDate__sub_title {
+                          line-height: 0.3em;
+                          font-size: 0.3em;
+                        }
+                      }
+                    }
+                  }  
+                }
+                .app-header.user-options {
+                  .user-options__options.user-control {
+                    margin: 0 10px;
+                    .user-control__item {
+                      &.more-btn-wrap {
+                        margin-left: 15px;
+                      }
+                      .user-control__img {
+                        &.more-btn {
+                            
+                        }
+                        &.add-contact-btn {
+                          width: 2em;
+                        }
+                        &.writing-btn {
+                          width: 1.1em;
+                        }
+                      }
+                    }
+                    .user-control__item.more-btn-wrap {
+                      .user-control__img.more-btn {
+                        
+                      }
+                    }
+                  }
+                  .user-options__search {
+                    .search-input {
+                      background-size: 0.9em;
+                      font-size: 0.9em;
+                    }
+                  }
+                }
+              }
+                  
+              .chatContent {
+                .chatContentWrapper {
+                  // date
+                  .date_dialogs {
+                    .date_dialogs_item {
+                      font-size: 0.5em;
+                    }
+                  }
+                  // messages
+                  .chat-column {
+                    .item {
+                      .chat-icon {
+                        img {
+                          width: 17px
+                        }
+                      }
+                      .message-date {
+                        font-size: 0.3em;
+                      }
+                      .chat-message {
+                        font-size: 0.3em;
+                        padding: 1em 1em;
+                        line-height: 1.5em;
+                      }
+                    }
+                  }
+                  // user choose btns
+                  .options_wrapper {
+                    .chat_options {
+                      .optin_item {
+                        .option_btn {
+                          padding: 1em;
+                          font-size: 0.3em;
+                        }
+                      }
+                    }
+                  }
+                }
+                .chats-list {
+                  .chat-item {
+                    .chat__logo-and-heading {
+                      .chat__avatar {
+                        width: 35px;
+                        height: 35px;
+                      }
+                      .chat__heading {
+                        .chat__title {
+                          font-size: 0.9em;
+                        }
+                        .chat__sub_title {
+                          font-size: 0.8em;
+                        }
+                      }
+                    }
+                    .chat__date {
+                      .chat__date__time {
+                        font-size: 0.8em;
+                      }
+                    }
+                  }
+                }
+                // scroll
+                .simplebar-track.simplebar-vertical {
+                  width: 6px;
+                }
+              }
+              .sections-app-wrapp {
+                height: 3em;
+                  .sections-app {
+                    margin-top: 5px;
+                    .sections-app__item {
+                      .section_img {
+                        height: 20px;
+                      }
+                      .section_heading {
+                        font-size: 0.7em;
+                      }
+                    }
+                  }
+                }
+              #chat-ui-input {
+                height: 1.5em;
+                min-height: 1.5em;
+                .input-element{
+                  .input-element-item{
+                    &.attach{
+                      width: 0.5em; height: 0.5em;
+                      background: url('../../assets/img/icons/transparent/attach.svg');
+                      background-size: 100%
+                    }
+                    &.micro{
+                      width: 0.35em; height: 0.5em;
+                      background: url('../../assets/img/icons/transparent/micro-svg.svg');
+                      background-size: 100%
+                    }
+                    &.gallery{
+                      width: 0.5em; height: 0.5em;
+                      background: url('../../assets/img/icons_red_phone_transformer/gallery@2x.png');
+                      background-size: 100%
+                    }
+                  }
+                }
+                .chatSend {
+                  #terminal {
+                    .chatSend__TextAndSend {
+                      height: terminalHeight = 0.5em;
+                      line-height: terminalHeight;
+                      .sendText-wrap {
+                          background-size: 0.3em;
+                          min-height: terminalHeight;
+                          background-size: sendTextBgSize = 0.3em;
+                        #setter.sendText {
+                          background-size: sendTextBgSize;
+                          font-size: 0.3em;
+                          min-height: terminalHeight;
+                        }
+                      }
+                      #getter{
+                        line-height: getterLineHeight = 0.3em
+                        span#writer{
+                          font-size: 0.3em;
+                          line-height: getterLineHeight
+                        }
+                        b#cursor.cursor{
+                          height: terminalHeight;
+                          line-height: getterLineHeight
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .bottom-ui {
+                height: 0.5em;
+                .bottom-ui__phone_line {
+                  height: 0.1em;
+                  margin: 2px 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // по скольку габариты анимации зависят от высоты - то юзаем min-height
 @media screen and (min-height: 400px)
   .display_container
@@ -34,11 +271,10 @@
         .input-element-item.attach
           //
       .chatSend
-        width: 70%
+        // width: 70%
         margin-right: bottomLeftRightOffsets;
         height: auto
         #terminal
-          //
           height: auto
           .chatSend__TextAndSend
             margin: 0vw;
