@@ -6,6 +6,7 @@ export class ChatsList {
   constructor(props) {
     this.bp
     this.dialogs
+    this.needChatItemId = '.need-item'
   }
 
   init (bp, dialogs) {
@@ -14,8 +15,8 @@ export class ChatsList {
     // show html
     this.create()
     // wait click event
-    const needChatItemId = '.need-item'
-    document.querySelector(needChatItemId).addEventListener('click', (event) => {
+    // const needChatItemId = '.need-item'
+    document.querySelector(this.needChatItemId).addEventListener('click', (event) => {
       console.log('click to need item')
 
       // run animation redirect to chat
@@ -37,6 +38,11 @@ export class ChatsList {
     // ставим пропорции для списка чатов
     const isChatsList = true
     this.bp.ResizeActivator(isChatsList)
+
+    //  через время активируем диалог, как буд-то произошел клик
+    setTimeout(() => {
+      document.querySelector(this.needChatItemId).click()
+    }, 3000)
   }
 
   runTransitionAnimation () {
