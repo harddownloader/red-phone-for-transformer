@@ -7,12 +7,12 @@ export default {
     marginLeft: 0,
   },
   paddingsInPercentsForPhoneDisplay: {
-    paddingTop: 35,
-    paddingRight: 15,
-    paddingBottom: 50,
-    paddingLeft: 15,
+    paddingTop: 4.14,
+    paddingRight: 5,
+    paddingBottom: 7.59,
+    paddingLeft: 5,
   },
-  chatSendHeightPercentage: 8,
+  sectionsAppHeightPercentage: 8.83,
   chatHeaderHeightPercentage: 7.3,
 
   topHeaderPercentage: 11.66,
@@ -22,6 +22,7 @@ export default {
   ChatAkcentBorderRadiusPercentage: 10.5,
 
   // chat list
-  topHeaderPercentage__chatList: 17,
-  chatSendHeightPercentage__chatList: 8
+  topHeaderHeightPercentage__chatList: 17,
+  chatUiInputHeightPercentage: 5.63,
+  bottomUiHeightPercentage: 1.88
 }

@@ -34,14 +34,14 @@ export class BuildPhone {
 
     this.chatContentHeight = this.displayElements().chatContentHeight // он же и max-height
 
+    // footer
+    this.chatUiInputHeight = this.displayElements().chatUiInputHeigh
+    this.bottomUiHeight = this.displayElements().bottomUiHeight
+    this.sectionsAppHeight = this.displayElements().sectionsAppHeight
+
     this.chatHeaderWrapperOtricatelnueMargins = {
       marginLeft: '-' + this.marginsForPhoneDisplay.marginLeft + 'px',
       marginRight: '-' + this.marginsForPhoneDisplay.marginRight + 'px',
-    }
-
-    this.hrLineMargins = {
-      marginLeft: '-' + (this.marginsForPhoneDisplay.marginLeft - 1) + 'px', // 1 it's offset
-      marginRight: '-' + (this.marginsForPhoneDisplay.marginRight - 1) + 'px',
     }
   } // construstor
 
@@ -98,6 +98,14 @@ export class BuildPhone {
 
     document.querySelector('.chatHeaderWrapper').style.height =
       this.chatHeaderWrapperHeight + 'px'
+    
+    //--footer
+    document.querySelector('#chat-ui-input').style.height =
+      this.chatUiInputHeight + 'px'
+    document.querySelector('.bottom-ui').style.height =
+      this.bottomUiHeight + 'px'
+    document.querySelector('.sections-app-wrapp').style.height =
+      this.sectionsAppHeight + 'px'
     
     // PADDINGS
     const display_width_p_top = this.paddingsForPhoneDisplay.paddingTop
@@ -182,7 +190,7 @@ export class BuildPhone {
     // HEIGHT AND WIDHT
     document.querySelector('#wrapper_phone').style.width =
       this.getHW().width + 'px'
-    console.log(this.getHW().width)
+    // console.log(this.getHW().width)
     document.querySelector('#wrapper_phone').style.height =
       this.getHW().height + 'px'
 
@@ -196,6 +204,34 @@ export class BuildPhone {
 
     document.querySelector('.chatHeaderWrapper').style.height =
       this.displayElements(isChatsList).topHeaderHeight + 'px'
+    
+    //--footer
+    document.querySelector('#chat-ui-input').style.height =
+      this.displayElements(isChatsList).chatUiInputHeigh + 'px'
+    document.querySelector('.bottom-ui').style.height =
+      this.displayElements(isChatsList).bottomUiHeight + 'px'
+    document.querySelector('.sections-app-wrapp').style.height =
+      this.displayElements(isChatsList).sectionsAppHeight + 'px'
+
+    // PADDINGS
+    const display_width_p_top = this.phone_display().paddings.paddingTop.toString()
+    const display_width_p_right = this.phone_display().paddings.paddingRight.toString()
+    const display_width_p_bottom = this.phone_display().paddings.paddingBottom.toString()
+    const display_width_p_left = this.phone_display().paddings.paddingLeft.toString()
+
+    const padding_options =
+      display_width_p_top +
+      'px ' +
+      display_width_p_right +
+      'px ' +
+      display_width_p_bottom +
+      'px ' +
+      display_width_p_left +
+      'px'
+
+    document.querySelector('.phone_display').style.padding = padding_options
+    
+    
     // MARGINS
     const display_width_m_top = this.phone_display().margins.marginTop.toString()
     const display_width_m_right = this.phone_display().margins.marginRight.toString()
@@ -268,44 +304,68 @@ export class BuildPhone {
    * возвращает объект с нужными высотами частей анимации
    */
   displayElements(isChatsList = false) {
-    console.log('displayElements', isChatsList)
+    // console.log('displayElements', isChatsList)
     const height_ = this.getHW().height
 
     const topHeaderHeigthInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
-          const needPercentage = isChatsList ? configJS['topHeaderPercentage__chatList'] : configJS['topHeaderPercentage']
-          console.log('needPercentage', needPercentage)
+          const needPercentage = isChatsList ? configJS['topHeaderHeightPercentage__chatList'] : configJS['topHeaderPercentage']
+          // console.log('needPercentage', needPercentage)
           return needPercentage
         })(),
         height_
       ),
-      chatSendHeightInConfig = new ConvertTools().convert_percents_to_px(
+      chatUiInputHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
-          const needPercentage = isChatsList ? configJS['chatSendHeightPercentage__chatList'] : configJS['chatSendHeightPercentage']
-          console.log('chatSendHeightPercentage__chatList', needPercentage)
+          const needPercentage = isChatsList ? 0 : configJS['chatUiInputHeightPercentage']
+          // console.log('needPercentage', needPercentage)
           return needPercentage
         })(),
-        // configJS['chatSendHeightPercentage'],
         height_
       ),
-      chatSendHeight = chatSendHeightInConfig,
-      topHeaderHeight = topHeaderHeigthInConfig,
+      bottomUiHeightInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = isChatsList ? 0 : configJS['bottomUiHeightPercentage']
+          // console.log('needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        height_
+      ),
+      sectionsAppHeightInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = isChatsList ? configJS['sectionsAppHeightPercentage'] : 0
+          console.log('sectionsAppHeightInConfig needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        height_
+      ),
       sumMarginsTopBottom =
-        parseInt(this.marginsForPhoneDisplay.marginTop) +
-        parseInt(this.marginsForPhoneDisplay.marginBottom),
+        parseInt(this.phone_display().margins.marginTop.toString()) +
+        parseInt(this.phone_display().margins.marginBottom.toString()),
       sumPaddingsTopBottom =
-        parseInt(this.paddingsForPhoneDisplay.paddingTop) +
-        parseInt(this.paddingsForPhoneDisplay.paddingBottom),
+        parseInt(this.phone_display().paddings.paddingTop.toString()) +
+        parseInt(this.phone_display().paddings.paddingBottom.toString()),
       sumHeaderFooterOffsets =
-        chatSendHeight + topHeaderHeight + sumMarginsTopBottom + sumPaddingsTopBottom,
+        topHeaderHeigthInConfig +
+        chatUiInputHeightInConfig +
+        bottomUiHeightInConfig + 
+        sectionsAppHeightInConfig + 
+        sumMarginsTopBottom + 
+        sumPaddingsTopBottom,
       chatContentHeight = height_ - sumHeaderFooterOffsets
 
-    console.log('chatSendHeightInConfig', chatSendHeightInConfig)
     const parameters_elements = {
-      chatSendHeight: chatSendHeight,
-      topHeaderHeight: topHeaderHeight,
+      topHeaderHeight: topHeaderHeigthInConfig,
+      chatUiInputHeigh: chatUiInputHeightInConfig,
+      bottomUiHeight: bottomUiHeightInConfig,
+      sectionsAppHeight: sectionsAppHeightInConfig,
       chatContentHeight: chatContentHeight,
+      sumPaddingsTopBottom: sumPaddingsTopBottom,
+      sumMarginsTopBottom: sumMarginsTopBottom
     }
+
+    console.log('height_', height_)
+    console.log('parameters_elements', parameters_elements)
 
     return parameters_elements
   }
@@ -325,10 +385,11 @@ export class BuildPhone {
     const SumMarginsTopBottom = marginTop + marginBottom // 0 + 10% of img in px
 
     const paddingsParam = configJS['paddingsInPercentsForPhoneDisplay']
-    const paddingTop = paddingsParam.paddingTop,
-      paddingRight = paddingsParam.paddingRight,
-      paddingBottom = paddingsParam.paddingBottom,
-      paddingLeft = paddingsParam.paddingLeft
+
+    const paddingTop = new ConvertTools().convert_percents_to_px(paddingsParam.paddingTop, widht),
+      paddingRight = new ConvertTools().convert_percents_to_px(paddingsParam.paddingRight, widht),
+      paddingBottom = new ConvertTools().convert_percents_to_px(paddingsParam.paddingBottom, widht),
+      paddingLeft = new ConvertTools().convert_percents_to_px(paddingsParam.paddingLeft, widht)
 
       
     // const SumPaddingsLeftRight = paddingLeft + paddingRight

@@ -58,10 +58,15 @@
   .chat-item.need-item {
     cursor pointer
   }
+  .chat-item.active {
+    background-color: #fbf3f1  
+  }
   .chat-item {
     display: flex;
     justify-content: space-between;
-    margin: 0 10px;
+    padding: 0 10px;
+    transition: all 0.3s;
+    background-color: none;
     .chat__logo-and-heading {
       display: flex;
       .chat__avatar {
