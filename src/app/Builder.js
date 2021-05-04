@@ -187,6 +187,10 @@ export class BuildPhone {
    * при срабатывании события ресайза окна браузера
    */
   ResizeActivator(isChatsList = false) {
+    if(document.querySelector('.chat-list-version')) {
+      isChatsList = true
+    }
+    
     // HEIGHT AND WIDHT
     document.querySelector('#wrapper_phone').style.width =
       this.getHW().width + 'px'
@@ -313,6 +317,10 @@ export class BuildPhone {
    */
   displayElements(isChatsList = false) {
     // console.log('displayElements', isChatsList)
+    if(document.querySelector('.chat-list-version')) {
+      isChatsList = true
+    }
+
     const height_ = this.getHW().height
 
     const topHeaderHeigthInConfig = new ConvertTools().convert_percents_to_px(
@@ -353,13 +361,15 @@ export class BuildPhone {
       sumPaddingsTopBottom =
         parseInt(this.phone_display().paddings.paddingTop.toString()) +
         parseInt(this.phone_display().paddings.paddingBottom.toString()),
+      chatBordersTopBottom = 6,
       sumHeaderFooterOffsets =
         topHeaderHeigthInConfig +
         chatUiInputHeightInConfig +
         bottomUiHeightInConfig + 
         sectionsAppHeightInConfig + 
         sumMarginsTopBottom + 
-        sumPaddingsTopBottom,
+        sumPaddingsTopBottom +
+        chatBordersTopBottom,
       chatContentHeight = height_ - sumHeaderFooterOffsets,
       chatListMarginsTopBottom = 10,
       chatItemHeight = (chatContentHeight - chatListMarginsTopBottom) / 8
