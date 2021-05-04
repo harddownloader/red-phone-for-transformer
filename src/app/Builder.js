@@ -205,6 +205,14 @@ export class BuildPhone {
     document.querySelector('.chatHeaderWrapper').style.height =
       this.displayElements(isChatsList).topHeaderHeight + 'px'
     
+    //--chat list
+    if (isChatsList) {
+      document.querySelectorAll('.chat-item').forEach(item => {
+        item.style.height = this.displayElements(isChatsList).chatItemHeight + 'px'
+      })
+    }
+    
+    
     //--footer
     document.querySelector('#chat-ui-input').style.height =
       this.displayElements(isChatsList).chatUiInputHeigh + 'px'
@@ -352,7 +360,9 @@ export class BuildPhone {
         sectionsAppHeightInConfig + 
         sumMarginsTopBottom + 
         sumPaddingsTopBottom,
-      chatContentHeight = height_ - sumHeaderFooterOffsets
+      chatContentHeight = height_ - sumHeaderFooterOffsets,
+      chatListMarginsTopBottom = 10,
+      chatItemHeight = (chatContentHeight - chatListMarginsTopBottom) / 8
 
     const parameters_elements = {
       topHeaderHeight: topHeaderHeigthInConfig,
@@ -361,7 +371,8 @@ export class BuildPhone {
       sectionsAppHeight: sectionsAppHeightInConfig,
       chatContentHeight: chatContentHeight,
       sumPaddingsTopBottom: sumPaddingsTopBottom,
-      sumMarginsTopBottom: sumMarginsTopBottom
+      sumMarginsTopBottom: sumMarginsTopBottom,
+      chatItemHeight: chatItemHeight
     }
 
     console.log('height_', height_)
