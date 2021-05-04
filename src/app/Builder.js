@@ -190,7 +190,7 @@ export class BuildPhone {
     if(document.querySelector('.chat-list-version')) {
       isChatsList = true
     }
-    
+
     // HEIGHT AND WIDHT
     document.querySelector('#wrapper_phone').style.width =
       this.getHW().width + 'px'
@@ -209,10 +209,38 @@ export class BuildPhone {
     document.querySelector('.chatHeaderWrapper').style.height =
       this.displayElements(isChatsList).topHeaderHeight + 'px'
     
+    document.querySelector('.topHeaderNetworkWrap__img').style.width =
+      this.displayElements().wifiAndBatteryWidth + 'px'
+
+    document.querySelector('.user-control__img.more-btn').style.height =
+      this.displayElements().moreBtnHeight + 'px'
+
+    document.querySelector('.user-control__img.add-contact-btn').style.height =
+      this.displayElements().addContactHeight + 'px'
+    
+    document.querySelector('.user-control__img.writing-btn').style.height =
+      this.displayElements().writingHeight + 'px'
+    
+    // document.querySelector('.user-control__img.writing-btn').style.width =
+    //   this.displayElements().writingHeight + 'px'
+
+    // document.querySelector('.user-control__img.writing-btn').style.width =
+    //   this.displayElements().writingHeight + 'px'
+    
     //--chat list
     if (isChatsList) {
+      // chat item
       document.querySelectorAll('.chat-item').forEach(item => {
         item.style.height = this.displayElements(isChatsList).chatItemHeight + 'px'
+      })
+      // chat item img
+      document.querySelectorAll('.chat-item .chat__avatar').forEach(item => {
+        item.style.height = this.displayElements(isChatsList).chatItemImgHeight + 'px'
+        item.style.width = this.displayElements(isChatsList).chatItemImgHeight + 'px'
+      })
+      // section app icons
+      document.querySelectorAll('.sections-app__item .section_img').forEach(item => {
+        item.style.height = this.displayElements(isChatsList).sectionsAppIconsHeight + 'px'
       })
     }
     
@@ -270,6 +298,12 @@ export class BuildPhone {
       '.chatHeaderWrapper'
     ).style.marginRight = this.phone_display(isChatsList).margins.marginRight.toString()
 
+    document.querySelector('.user-options__options').style.marginLeft =
+      this.displayElements().userOptionsOffests.marginLeft + 'px'
+    
+    document.querySelector('.user-options__options').style.marginRight =
+      this.displayElements().userOptionsOffests.marginRight + 'px'
+
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
@@ -322,6 +356,7 @@ export class BuildPhone {
     }
 
     const height_ = this.getHW().height
+    const width_ = this.getHW().width
 
     const topHeaderHeigthInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
@@ -350,11 +385,56 @@ export class BuildPhone {
       sectionsAppHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
           const needPercentage = isChatsList ? configJS['sectionsAppHeightPercentage'] : 0
-          console.log('sectionsAppHeightInConfig needPercentage', needPercentage)
+          // console.log('sectionsAppHeightInConfig needPercentage', needPercentage)
           return needPercentage
         })(),
         height_
       ),
+      sectionsAppIconsHeightInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = configJS['sectionsAppIconsHeightPercentage']
+          // console.log('sectionsAppIconsHeightInConfig needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        height_
+      ),
+      chatItemImgHeightInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = isChatsList ? configJS['chatItemImgHeight'] : 0
+          // console.log('chatItemImgHeightInConfig needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        height_
+      ),
+      wifiAndBatteryWidthInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = configJS['wifiAndBatteryWidthPercentage']
+          // console.log('wifiAndBatteryWidthInConfig needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        width_
+      ),
+      moreBtnHeightInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['moreBtnHeightPercentage'],
+        height_
+      ),
+      addContactHeightInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['addContactHeightPercentage'],
+        height_
+      ),
+      writingHeightInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['writingHeightPercentage'],
+        height_
+      ),
+      userOptionsMarginRightInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['userOptionsOffestsPercentage']['marginRight'],
+        width_
+      ),
+      userOptionsMarginLeftInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['userOptionsOffestsPercentage']['marginLeft'],
+        width_
+      ),
+      // sums margins and paddings
       sumMarginsTopBottom =
         parseInt(this.phone_display().margins.marginTop.toString()) +
         parseInt(this.phone_display().margins.marginBottom.toString()),
@@ -382,7 +462,17 @@ export class BuildPhone {
       chatContentHeight: chatContentHeight,
       sumPaddingsTopBottom: sumPaddingsTopBottom,
       sumMarginsTopBottom: sumMarginsTopBottom,
-      chatItemHeight: chatItemHeight
+      chatItemHeight: chatItemHeight,
+      chatItemImgHeight: chatItemImgHeightInConfig,
+      wifiAndBatteryWidth: wifiAndBatteryWidthInConfig,
+      sectionsAppIconsHeight: sectionsAppIconsHeightInConfig,
+      moreBtnHeight: moreBtnHeightInConfig,
+      addContactHeight: addContactHeightInConfig,
+      writingHeight: writingHeightInConfig,
+      userOptionsOffests: {
+        marginRight: userOptionsMarginRightInConfig,
+        marginLeft: userOptionsMarginLeftInConfig
+      }
     }
 
     console.log('height_', height_)
