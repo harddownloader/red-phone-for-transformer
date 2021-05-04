@@ -17,6 +17,12 @@ export default {
   topHeaderPercentage: 11.66,
   chatTopHeaderContainerPercentage: 3.83,
   wifiAndBatteryWidthPercentage: 13.75,
+  topHeaderPaddingsPercentage: {
+    paddingTop: 2.76,
+    paddingRight: 5,
+    paddingLeft: 8.75,
+    paddingBottom: 2.76
+  },
 
   // header
   moreBtnHeightPercentage: 0.41,

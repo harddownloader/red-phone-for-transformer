@@ -270,6 +270,16 @@ export class BuildPhone {
       'px'
 
     document.querySelector('.phone_display').style.padding = padding_options
+
+    //--top header
+    document.querySelector('.chatTopHeaderContainer').style.paddingTop = 
+      this.displayElements().topHeaderPaddings.paddingTop + 'px'
+    document.querySelector('.chatTopHeaderContainer').style.paddingRight = 
+      this.displayElements().topHeaderPaddings.paddingRight + 'px'
+    document.querySelector('.chatTopHeaderContainer').style.paddingLeft = 
+      this.displayElements().topHeaderPaddings.paddingLeft + 'px'
+    document.querySelector('.chatTopHeaderContainer').style.paddingBottom = 
+      this.displayElements().topHeaderPaddings.paddingBottom + 'px'
     
     
     // MARGINS
@@ -434,6 +444,22 @@ export class BuildPhone {
         configJS['userOptionsOffestsPercentage']['marginLeft'],
         width_
       ),
+      topHeaderPaddingTopInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['topHeaderPaddingsPercentage']['paddingTop'],
+        height_
+      ),
+      topHeaderPaddingRightInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['topHeaderPaddingsPercentage']['paddingRight'],
+        width_
+      ),
+      topHeaderPaddingLeftInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['topHeaderPaddingsPercentage']['paddingLeft'],
+        width_
+      ),
+      topHeaderPaddingBottomInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['topHeaderPaddingsPercentage']['paddingBottom'],
+        height_
+      ),
       // sums margins and paddings
       sumMarginsTopBottom =
         parseInt(this.phone_display().margins.marginTop.toString()) +
@@ -445,9 +471,9 @@ export class BuildPhone {
       sumHeaderFooterOffsets =
         topHeaderHeigthInConfig +
         chatUiInputHeightInConfig +
-        bottomUiHeightInConfig + 
-        sectionsAppHeightInConfig + 
-        sumMarginsTopBottom + 
+        bottomUiHeightInConfig +
+        sectionsAppHeightInConfig +
+        sumMarginsTopBottom +
         sumPaddingsTopBottom +
         chatBordersTopBottom,
       chatContentHeight = height_ - sumHeaderFooterOffsets,
@@ -472,7 +498,13 @@ export class BuildPhone {
       userOptionsOffests: {
         marginRight: userOptionsMarginRightInConfig,
         marginLeft: userOptionsMarginLeftInConfig
-      }
+      },
+      topHeaderPaddings: {
+        paddingTop: topHeaderPaddingTopInConfig,
+        paddingRight: topHeaderPaddingRightInConfig,
+        paddingLeft: topHeaderPaddingLeftInConfig,
+        paddingBottom: topHeaderPaddingBottomInConfig
+      },
     }
 
     console.log('height_', height_)
