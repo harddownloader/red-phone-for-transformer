@@ -221,11 +221,8 @@ export class BuildPhone {
     document.querySelector('.user-control__img.writing-btn').style.height =
       this.displayElements().writingHeight + 'px'
     
-    // document.querySelector('.user-control__img.writing-btn').style.width =
-    //   this.displayElements().writingHeight + 'px'
-
-    // document.querySelector('.user-control__img.writing-btn').style.width =
-    //   this.displayElements().writingHeight + 'px'
+    document.querySelector('.user-options__search .search-input').style.height =
+      this.displayElements().searchHeight + 'px'
     
     //--chat list
     if (isChatsList) {
@@ -460,6 +457,10 @@ export class BuildPhone {
         configJS['topHeaderPaddingsPercentage']['paddingBottom'],
         height_
       ),
+      searchHeightInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['searchHeightPercentage'],
+        height_
+      ),
       // sums margins and paddings
       sumMarginsTopBottom =
         parseInt(this.phone_display().margins.marginTop.toString()) +
@@ -505,6 +506,7 @@ export class BuildPhone {
         paddingLeft: topHeaderPaddingLeftInConfig,
         paddingBottom: topHeaderPaddingBottomInConfig
       },
+      searchHeight: searchHeightInConfig,
     }
 
     console.log('height_', height_)
