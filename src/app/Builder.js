@@ -228,16 +228,16 @@ export class BuildPhone {
     if (isChatsList) {
       // chat item
       document.querySelectorAll('.chat-item').forEach(item => {
-        item.style.height = this.displayElements(isChatsList).chatItemHeight + 'px'
+        item.style.height = Math.round(this.displayElements(isChatsList).chatItemHeight) + 'px'
       })
       // chat item img
       document.querySelectorAll('.chat-item .chat__avatar').forEach(item => {
-        item.style.height = this.displayElements(isChatsList).chatItemImgHeight + 'px'
-        item.style.width = this.displayElements(isChatsList).chatItemImgHeight + 'px'
+        item.style.height = Math.round(this.displayElements(isChatsList).chatItemImgHeight) + 'px'
+        item.style.width = Math.round(this.displayElements(isChatsList).chatItemImgHeight) + 'px'
       })
       // section app icons
       document.querySelectorAll('.sections-app__item .section_img').forEach(item => {
-        item.style.height = this.displayElements(isChatsList).sectionsAppIconsHeight + 'px'
+        item.style.height = Math.round(this.displayElements(isChatsList).sectionsAppIconsHeight) + 'px'
       })
     }
     
