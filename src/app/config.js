@@ -53,6 +53,7 @@ export default {
   leftLogoOffsetWidthPercentage: 3.75,
   rightLogoOffsetWidthPercentage: 1.25,
   headerLogoWidthPercentage: 6.75,
+  headerBackBtnWidthPercentage: 2.4,
   //--chating footer
   chatUiInputHeightPercentage: 5.63,
   bottomUiHeightPercentage: 1.88,

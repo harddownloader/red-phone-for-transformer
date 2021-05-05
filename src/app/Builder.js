@@ -244,7 +244,10 @@ export class BuildPhone {
     //--header
     document.querySelector('.chatHeader__logo').style.width =
       Math.round(this.displayElements().headerLogoWidth) + 'px'
-    
+    document.querySelector('.chatHeader__back_btn').style.width =
+      Math.round(this.displayElements().headerBackBtnWidth) + 'px'
+
+      
     //--footer
     document.querySelector('#chat-ui-input').style.height =
       Math.round(this.displayElements(isChatsList).chatUiInputHeigh) + 'px'
@@ -454,6 +457,10 @@ export class BuildPhone {
         configJS['headerLogoWidthPercentage'],
         width_
       ),
+      headerBackBtnWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['headerBackBtnWidthPercentage'],
+        width_
+      ),
       chatUiInputHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
           const needPercentage = isChatsList ? 0 : configJS['chatUiInputHeightPercentage']
@@ -613,6 +620,7 @@ export class BuildPhone {
       leftLogoOffsetWidth: leftLogoOffsetWidthInConfig,
       rightLogoOffsetWidth: rightLogoOffsetWidthInConfig,
       headerLogoWidth: headerLogoWidthInConfig,
+      headerBackBtnWidth: headerBackBtnWidthInConfig,
       chatUiInputHeigh: chatUiInputHeightInConfig,
       userInputWidth: userInputWidthInConfig,
       userInputHeight: userInputHeightInConfig,
