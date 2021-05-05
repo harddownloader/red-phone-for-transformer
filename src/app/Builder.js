@@ -355,6 +355,13 @@ export class BuildPhone {
       this.displayElements().userInputHeight + 'px'
     document.querySelector('.sendText').style.lineHeight =
       this.displayElements().userInputHeight + 'px'
+    
+    // background size
+    document.querySelector('.sendText-wrap').style.backgroundSize =
+      this.displayElements().userInputBgWidth + 'px'
+    document.querySelector('.sendText').style.backgroundSize =
+      this.displayElements().userInputBgWidth + 'px'
+      
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
@@ -461,6 +468,10 @@ export class BuildPhone {
           return needPercentage
         })(),
         height_
+      ),
+      userInputBgWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['userInputBgWidthPercentage'],
+        width_
       ),
       bottomOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
         configJS['bottomOffsetWidthPercentage'],
@@ -596,6 +607,7 @@ export class BuildPhone {
       chatUiInputHeigh: chatUiInputHeightInConfig,
       userInputWidth: userInputWidthInConfig,
       userInputHeight: userInputHeightInConfig,
+      userInputBgWidth: userInputBgWidthInConfig,
       bottomOffsetWidth: bottomOffsetWidthInConfig,
       bottomIconAddFileWidth: bottomIconAddFileWidthInConfig,
       bottomIconGalleryWidth: bottomIconGalleryWidthInConfig,
