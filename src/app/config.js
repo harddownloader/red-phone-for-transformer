@@ -44,7 +44,7 @@ export default {
   topHeaderHeightPercentage__chatList: 17,
   sectionsAppHeightPercentage: 8.83,
   sectionsAppIconsHeightPercentage: 2.76,
-  chatItemImgHeightPercentage: 5.93,
+  chatItemImgHeightPercentage: 6.94,
 
   // chating
   //--chating header

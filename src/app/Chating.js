@@ -51,7 +51,7 @@ export class Chating {
       // is app
       AppIcon =
         '<div class="item">\n' +
-        '<div class="chat-icon"><img width="30" src="assets/img/icons_red_phone_transformer/logo@2x.png"></div>\n' +
+        '<div class="chat-icon"><img width="30" src="assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png"></div>\n' +
         '</div>'
     } else if (typeSet == 'company') {
       // is user
