@@ -241,6 +241,9 @@ export class BuildPhone {
       })
     }
     
+    //--header
+    document.querySelector('.chatHeader__logo').style.width =
+      this.displayElements().headerLogoWidth + 'px'
     
     //--footer
     document.querySelector('#chat-ui-input').style.height =
@@ -310,6 +313,7 @@ export class BuildPhone {
 
     document.querySelector('.phone_display').style.margin = margin_options
 
+    //--header
     document.querySelector(
       '.chatHeaderWrapper'
     ).style.marginLeft = this.phone_display().margins.marginLeft.toString()
@@ -324,6 +328,16 @@ export class BuildPhone {
     document.querySelector('.user-options__options').style.marginRight =
       this.displayElements().userOptionsOffests.marginRight + 'px'
     
+    document.querySelector('.chatHeader__back_btn').style.marginLeft =
+      this.displayElements().leftHeaderOffestWidth + 'px'
+    document.querySelector('.headAndDate__head').style.marginRight =
+      this.displayElements().rightHeaderOffestWidth + 'px'
+    document.querySelector('.chatHeader__logo').style.marginLeft =
+      this.displayElements().leftLogoOffsetWidth + 'px'
+    document.querySelector('.chatHeader__logo').style.marginRight =
+      this.displayElements().rightLogoOffsetWidth + 'px'
+    
+    //--footer
     document.querySelector('.input-element.attach-wrap').style.marginLeft =
       this.displayElements().bottomOffsetWidth + 'px'
     document.querySelector('.input-element.gallery-wrap').style.marginLeft =
@@ -403,6 +417,26 @@ export class BuildPhone {
           return needPercentage
         })(),
         height_
+      ),
+      leftHeaderOffestWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['leftHeaderOffestWidthPercentage'],
+        width_
+      ),
+      rightHeaderOffestWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['rightHeaderOffestWidthPercentage'],
+        width_
+      ),
+      leftLogoOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['leftLogoOffsetWidthPercentage'],
+        width_
+      ),
+      rightLogoOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['rightLogoOffsetWidthPercentage'],
+        width_
+      ),
+      headerLogoWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['headerLogoWidthPercentage'],
+        width_
       ),
       chatUiInputHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
@@ -554,6 +588,11 @@ export class BuildPhone {
 
     const parameters_elements = {
       topHeaderHeight: topHeaderHeigthInConfig,
+      leftHeaderOffestWidth: leftHeaderOffestWidthInConfig,
+      rightHeaderOffestWidth: rightHeaderOffestWidthInConfig,
+      leftLogoOffsetWidth: leftLogoOffsetWidthInConfig,
+      rightLogoOffsetWidth: rightLogoOffsetWidthInConfig,
+      headerLogoWidth: headerLogoWidthInConfig,
       chatUiInputHeigh: chatUiInputHeightInConfig,
       userInputWidth: userInputWidthInConfig,
       userInputHeight: userInputHeightInConfig,

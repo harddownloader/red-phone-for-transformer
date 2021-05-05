@@ -47,6 +47,13 @@ export default {
   chatItemImgHeightPercentage: 5.93,
 
   // chating
+  //--chating header
+  leftHeaderOffestWidthPercentage: 5,
+  rightHeaderOffestWidthPercentage: 1.25,
+  leftLogoOffsetWidthPercentage: 3.75,
+  rightLogoOffsetWidthPercentage: 1.25,
+  headerLogoWidthPercentage: 6.75,
+  //--chating footer
   chatUiInputHeightPercentage: 5.63,
   bottomUiHeightPercentage: 1.88,
   bottomLineWidthPercentage: 29.5,
