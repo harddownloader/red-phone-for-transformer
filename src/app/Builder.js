@@ -255,6 +255,12 @@ export class BuildPhone {
       this.displayElements().userInputWidth + 'px'
     document.querySelector('.chatSend').style.height =
       this.displayElements().userInputHeight + 'px'
+    document.querySelector('.input-element.attach-wrap').style.width =
+      this.displayElements().bottomIconAddFileWidth + 'px'
+    document.querySelector('.input-element.gallery-wrap').style.width =
+      this.displayElements().bottomIconGalleryWidth + 'px'
+    document.querySelector('.input-element.micro-wrap').style.width =
+      this.displayElements().bottomIconMicroWidth + 'px'
       
 
     // PADDINGS
@@ -317,6 +323,24 @@ export class BuildPhone {
     
     document.querySelector('.user-options__options').style.marginRight =
       this.displayElements().userOptionsOffests.marginRight + 'px'
+    
+    document.querySelector('.input-element.attach-wrap').style.marginLeft =
+      this.displayElements().bottomOffsetWidth + 'px'
+    document.querySelector('.input-element.gallery-wrap').style.marginLeft =
+      this.displayElements().bottomOffsetWidth + 'px'  
+    document.querySelector('.input-element.micro-wrap').style.marginLeft =
+      this.displayElements().bottomOffsetWidth + 'px'  
+    document.querySelector('.chatSend').style.marginLeft =
+      this.displayElements().bottomOffsetWidth + 'px'  
+    document.querySelector('.chatSend').style.marginRight =
+      this.displayElements().bottomOffsetWidth + 'px'
+    
+    
+    // line height
+    document.querySelector('.chatSend__TextAndSend').style.lineHeight =
+      this.displayElements().userInputHeight + 'px'
+    document.querySelector('.sendText').style.lineHeight =
+      this.displayElements().userInputHeight + 'px'
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
     // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
@@ -403,6 +427,22 @@ export class BuildPhone {
           return needPercentage
         })(),
         height_
+      ),
+      bottomOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['bottomOffsetWidthPercentage'],
+        width_
+      ),
+      bottomIconAddFileWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['bottomIconAddFileWidthPercentage'],
+        width_
+      ),
+      bottomIconGalleryWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['bottomIconGalleryWidthPercentage'],
+        width_
+      ),
+      bottomIconMicroWidthInConfig = new ConvertTools().convert_percents_to_px(
+        configJS['bottomIconMicroWidthPercentage'],
+        width_
       ),
       bottomUiHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
@@ -517,6 +557,10 @@ export class BuildPhone {
       chatUiInputHeigh: chatUiInputHeightInConfig,
       userInputWidth: userInputWidthInConfig,
       userInputHeight: userInputHeightInConfig,
+      bottomOffsetWidth: bottomOffsetWidthInConfig,
+      bottomIconAddFileWidth: bottomIconAddFileWidthInConfig,
+      bottomIconGalleryWidth: bottomIconGalleryWidthInConfig,
+      bottomIconMicroWidth: bottomIconMicroWidthInConfig,
       bottomUiHeight: bottomUiHeightInConfig,
       bottomLineWidth: bottomLineWidthInConfig,
       sectionsAppHeight: sectionsAppHeightInConfig,

@@ -52,4 +52,8 @@ export default {
   bottomLineWidthPercentage: 29.5,
   userInputWidthPercentage: 60,
   userInputHeightPercentage: 3.86,
+  bottomOffsetWidthPercentage: 3.25,
+  bottomIconAddFileWidthPercentage: 4.5,
+  bottomIconGalleryWidthPercentage: 4.5,
+  bottomIconMicroWidthPercentage: 4,
 }

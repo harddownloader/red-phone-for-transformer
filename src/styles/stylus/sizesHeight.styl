@@ -175,16 +175,12 @@
                 .chatSend {
                   #terminal {
                     .chatSend__TextAndSend {
-                      height: terminalHeight = 0.5em;
-                      line-height: terminalHeight;
                       .sendText-wrap {
                           background-size: 0.3em;
-                          min-height: terminalHeight;
                           background-size: sendTextBgSize = 0.3em;
                         #setter.sendText {
                           background-size: sendTextBgSize;
                           font-size: 0.3em;
-                          min-height: terminalHeight;
                         }
                       }
                       #getter{
@@ -230,10 +226,8 @@
               font-size: 2vh;
     #chat-ui-input
       justify-content: space-between;
-      .input-element:first-child
-        margin-left: bottomLeftRightOffsets
       .input-element
-        width: 6%
+        // width: 6%
         margin: 0px auto
         .input-element-item
           margin: 0 auto;
@@ -252,22 +246,14 @@
         .input-element-item.attach
           //
       .chatSend
-        // width: 70%
-        margin-right: bottomLeftRightOffsets;
-        // height: auto
         #terminal
-          height: 100%;
-          width: 100%;
           .chatSend__TextAndSend
-            margin: 0vw;
-            height: 2em;
-            line-height: 2em;
+            margin: 0;
             .sendText-wrap
               background: url('../../assets/img/icons/transparent/emoji.svg') no-repeat scroll 98% 50% #ffffff;
               background-size: sendTextBgSize
               height 100%
               width: 100%;
-              min-height: 30px;
               border-radius: 3.3vh;
               #setter.sendText
                 background: url('../../assets/img/icons/transparent/emoji.svg') no-repeat scroll 98% 50% #ffffff;
@@ -276,10 +262,9 @@
                 padding: 0em leftOffsetInput 0em rightOffsetInput;
                 font-size: 15px
                 border-radius: 3.3vh
-                // width calc(100% - 2em)
                 width: 100%
                 height: 100%;
-                min-height: 30px
+                // min-height: 30px
                 border-radius: 20px;
             #getter
               height: 100%
