@@ -249,6 +249,13 @@ export class BuildPhone {
       this.displayElements(isChatsList).bottomUiHeight + 'px'
     document.querySelector('.sections-app-wrapp').style.height =
       this.displayElements(isChatsList).sectionsAppHeight + 'px'
+    document.querySelector('.bottom-ui__phone_line').style.width =
+      this.displayElements().bottomLineWidth + 'px'
+    document.querySelector('.chatSend').style.width =
+      this.displayElements().userInputWidth + 'px'
+    document.querySelector('.chatSend').style.height =
+      this.displayElements().userInputHeight + 'px'
+      
 
     // PADDINGS
     const display_width_p_top = this.phone_display().paddings.paddingTop.toString()
@@ -381,6 +388,22 @@ export class BuildPhone {
         })(),
         height_
       ),
+      userInputWidthInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = isChatsList ? 0 : configJS['userInputWidthPercentage']
+          // console.log('needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        width_
+      ),
+      userInputHeightInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = isChatsList ? 0 : configJS['userInputHeightPercentage']
+          // console.log('needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        height_
+      ),
       bottomUiHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
           const needPercentage = isChatsList ? 0 : configJS['bottomUiHeightPercentage']
@@ -388,6 +411,14 @@ export class BuildPhone {
           return needPercentage
         })(),
         height_
+      ),
+      bottomLineWidthInConfig = new ConvertTools().convert_percents_to_px(
+        (() => {
+          const needPercentage = isChatsList ? 0 : configJS['bottomLineWidthPercentage']
+          // console.log('needPercentage', needPercentage)
+          return needPercentage
+        })(),
+        width_
       ),
       sectionsAppHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
@@ -407,7 +438,7 @@ export class BuildPhone {
       ),
       chatItemImgHeightInConfig = new ConvertTools().convert_percents_to_px(
         (() => {
-          const needPercentage = isChatsList ? configJS['chatItemImgHeight'] : 0
+          const needPercentage = isChatsList ? configJS['chatItemImgHeightPercentage'] : 0
           // console.log('chatItemImgHeightInConfig needPercentage', needPercentage)
           return needPercentage
         })(),
@@ -484,7 +515,10 @@ export class BuildPhone {
     const parameters_elements = {
       topHeaderHeight: topHeaderHeigthInConfig,
       chatUiInputHeigh: chatUiInputHeightInConfig,
+      userInputWidth: userInputWidthInConfig,
+      userInputHeight: userInputHeightInConfig,
       bottomUiHeight: bottomUiHeightInConfig,
+      bottomLineWidth: bottomLineWidthInConfig,
       sectionsAppHeight: sectionsAppHeightInConfig,
       chatContentHeight: chatContentHeight,
       sumPaddingsTopBottom: sumPaddingsTopBottom,
