@@ -193,36 +193,36 @@ export class BuildPhone {
 
     // HEIGHT AND WIDHT
     document.querySelector('#wrapper_phone').style.width =
-      this.getHW().width + 'px'
+      Math.round(this.getHW().width) + 'px'
     // console.log(this.getHW().width)
     document.querySelector('#wrapper_phone').style.height =
-      this.getHW().height + 'px'
+      Math.round(this.getHW().height) + 'px'
 
     document.querySelector('.phone_display').style.height =
-      this.phone_display().height + 'px'
+      Math.round(this.phone_display().height) + 'px'
     document.querySelector('.phone_display').style.width =
-      this.phone_display().width + 'px'
+      Math.round(this.phone_display().width) + 'px'
 
     document.querySelector('.chatContent').style.maxHeight =
-      this.displayElements(isChatsList).chatContentHeight + 'px'
+      Math.round(this.displayElements(isChatsList).chatContentHeight) + 'px'
 
     document.querySelector('.chatHeaderWrapper').style.height =
-      this.displayElements(isChatsList).topHeaderHeight + 'px'
+      Math.round(this.displayElements(isChatsList).topHeaderHeight) + 'px'
     
     document.querySelector('.topHeaderNetworkWrap__img').style.width =
-      this.displayElements().wifiAndBatteryWidth + 'px'
+      Math.round(this.displayElements().wifiAndBatteryWidth) + 'px'
 
     document.querySelector('.user-control__img.more-btn').style.height =
-      this.displayElements().moreBtnHeight + 'px'
+      Math.round(this.displayElements().moreBtnHeight) + 'px'
 
     document.querySelector('.user-control__img.add-contact-btn').style.height =
-      this.displayElements().addContactHeight + 'px'
+      Math.round(this.displayElements().addContactHeight) + 'px'
     
     document.querySelector('.user-control__img.writing-btn').style.height =
-      this.displayElements().writingHeight + 'px'
+      Math.round(this.displayElements().writingHeight) + 'px'
     
     document.querySelector('.user-options__search .search-input').style.height =
-      this.displayElements().searchHeight + 'px'
+      Math.round(this.displayElements().searchHeight) + 'px'
     
     //--chat list
     if (isChatsList) {
@@ -243,27 +243,27 @@ export class BuildPhone {
     
     //--header
     document.querySelector('.chatHeader__logo').style.width =
-      this.displayElements().headerLogoWidth + 'px'
+      Math.round(this.displayElements().headerLogoWidth) + 'px'
     
     //--footer
     document.querySelector('#chat-ui-input').style.height =
-      this.displayElements(isChatsList).chatUiInputHeigh + 'px'
+      Math.round(this.displayElements(isChatsList).chatUiInputHeigh) + 'px'
     document.querySelector('.bottom-ui').style.height =
-      this.displayElements(isChatsList).bottomUiHeight + 'px'
+      Math.round(this.displayElements(isChatsList).bottomUiHeight) + 'px'
     document.querySelector('.sections-app-wrapp').style.height =
-      this.displayElements(isChatsList).sectionsAppHeight + 'px'
+      Math.round(this.displayElements(isChatsList).sectionsAppHeight) + 'px'
     document.querySelector('.bottom-ui__phone_line').style.width =
-      this.displayElements().bottomLineWidth + 'px'
+      Math.round(this.displayElements().bottomLineWidth) + 'px'
     document.querySelector('.chatSend').style.width =
-      this.displayElements().userInputWidth + 'px'
+      Math.round(this.displayElements().userInputWidth) + 'px'
     document.querySelector('.chatSend').style.height =
-      this.displayElements().userInputHeight + 'px'
+      Math.round(this.displayElements().userInputHeight) + 'px'
     document.querySelector('.input-element.attach-wrap').style.width =
-      this.displayElements().bottomIconAddFileWidth + 'px'
+      Math.round(this.displayElements().bottomIconAddFileWidth) + 'px'
     document.querySelector('.input-element.gallery-wrap').style.width =
-      this.displayElements().bottomIconGalleryWidth + 'px'
+      Math.round(this.displayElements().bottomIconGalleryWidth) + 'px'
     document.querySelector('.input-element.micro-wrap').style.width =
-      this.displayElements().bottomIconMicroWidth + 'px'
+      Math.round(this.displayElements().bottomIconMicroWidth) + 'px'
       
 
     // PADDINGS
@@ -286,13 +286,13 @@ export class BuildPhone {
 
     //--top header
     document.querySelector('.chatTopHeaderContainer').style.paddingTop = 
-      this.displayElements().topHeaderPaddings.paddingTop + 'px'
+      Math.round(this.displayElements().topHeaderPaddings.paddingTop) + 'px'
     document.querySelector('.chatTopHeaderContainer').style.paddingRight = 
-      this.displayElements().topHeaderPaddings.paddingRight + 'px'
+      Math.round(this.displayElements().topHeaderPaddings.paddingRight) + 'px'
     document.querySelector('.chatTopHeaderContainer').style.paddingLeft = 
-      this.displayElements().topHeaderPaddings.paddingLeft + 'px'
+      Math.round(this.displayElements().topHeaderPaddings.paddingLeft) + 'px'
     document.querySelector('.chatTopHeaderContainer').style.paddingBottom = 
-      this.displayElements().topHeaderPaddings.paddingBottom + 'px'
+      Math.round(this.displayElements().topHeaderPaddings.paddingBottom) + 'px'
     
     
     // MARGINS
@@ -323,44 +323,53 @@ export class BuildPhone {
     ).style.marginRight = this.phone_display(isChatsList).margins.marginRight.toString()
 
     document.querySelector('.user-options__options').style.marginLeft =
-      this.displayElements().userOptionsOffests.marginLeft + 'px'
+      Math.round(this.displayElements().userOptionsOffests.marginLeft) + 'px'
     
     document.querySelector('.user-options__options').style.marginRight =
-      this.displayElements().userOptionsOffests.marginRight + 'px'
+      Math.round(this.displayElements().userOptionsOffests.marginRight) + 'px'
     
     document.querySelector('.chatHeader__back_btn').style.marginLeft =
-      this.displayElements().leftHeaderOffestWidth + 'px'
+      Math.round(this.displayElements().leftHeaderOffestWidth) + 'px'
     document.querySelector('.headAndDate__head').style.marginRight =
-      this.displayElements().rightHeaderOffestWidth + 'px'
+      Math.round(this.displayElements().rightHeaderOffestWidth) + 'px'
     document.querySelector('.chatHeader__logo').style.marginLeft =
-      this.displayElements().leftLogoOffsetWidth + 'px'
+      Math.round(this.displayElements().leftLogoOffsetWidth) + 'px'
     document.querySelector('.chatHeader__logo').style.marginRight =
-      this.displayElements().rightLogoOffsetWidth + 'px'
+      Math.round(this.displayElements().rightLogoOffsetWidth) + 'px'
     
     //--footer
     document.querySelector('.input-element.attach-wrap').style.marginLeft =
-      this.displayElements().bottomOffsetWidth + 'px'
+      Math.round(this.displayElements().bottomOffsetWidth) + 'px'
     document.querySelector('.input-element.gallery-wrap').style.marginLeft =
-      this.displayElements().bottomOffsetWidth + 'px'  
+      Math.round(this.displayElements().bottomOffsetWidth) + 'px'  
     document.querySelector('.input-element.micro-wrap').style.marginLeft =
-      this.displayElements().bottomOffsetWidth + 'px'  
+      Math.round(this.displayElements().bottomOffsetWidth) + 'px'  
     document.querySelector('.chatSend').style.marginLeft =
-      this.displayElements().bottomOffsetWidth + 'px'  
+      Math.round(this.displayElements().bottomOffsetWidth) + 'px'  
     document.querySelector('.chatSend').style.marginRight =
-      this.displayElements().bottomOffsetWidth + 'px'
+      Math.round(this.displayElements().bottomOffsetWidth) + 'px'
     
     
     // line height
     document.querySelector('.chatSend__TextAndSend').style.lineHeight =
-      this.displayElements().userInputHeight + 'px'
+      Math.round(this.displayElements().userInputHeight) + 'px'
     document.querySelector('.sendText').style.lineHeight =
-      this.displayElements().userInputHeight + 'px'
+      Math.round(this.displayElements().userInputHeight) + 'px'
     
     // background size
     document.querySelector('.sendText-wrap').style.backgroundSize =
-      this.displayElements().userInputBgWidth + 'px'
+      Math.round(this.displayElements().userInputBgWidth) + 'px'
     document.querySelector('.sendText').style.backgroundSize =
-      this.displayElements().userInputBgWidth + 'px'
+      Math.round(this.displayElements().userInputBgWidth) + 'px'
+    
+    // font size
+    const userInputFontSize = Math.round(this.displayElements().userInputHeight) / 2
+    document.querySelector('.sendText').style.fontSize =
+      userInputFontSize + 'px'
+    document.querySelector('#writer').style.fontSize =
+      userInputFontSize + 'px'
+    document.querySelector('#cursor').style.fontSize =
+      userInputFontSize + 'px'
       
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
