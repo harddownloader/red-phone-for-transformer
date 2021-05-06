@@ -1,10 +1,10 @@
-import { BuildPhone } from './app/Builder' // на постройку самого телефона
+import {BuildPhone} from './app/Builder' // на постройку самого телефона
 // import { Chating } from './app/Chating' // на постройку механики обмена сообщениями
-import { ChatsList } from './app/chatsList' // создание списка чатов
+import {ChatsList} from './app/chatsList' // создание списка чатов
 
 // подрубаем стили на stylus-е
 require('./styles/stylus/main.styl')
-;(function () {
+;(function() {
   /**
    * класс инициализации самой анимации
    */
@@ -35,8 +35,8 @@ require('./styles/stylus/main.styl')
      */
     activateStyles(name = 'linkRedPhone') {
       document
-        .querySelector(`link[data-id=${name}]`)
-        .removeAttribute('disabled')
+          .querySelector(`link[data-id=${name}]`)
+          .removeAttribute('disabled')
     }
 
     /**
@@ -45,8 +45,8 @@ require('./styles/stylus/main.styl')
      */
     deactivateStyles(name = 'linkRedPhone') {
       document
-        .querySelector(`link[data-id=${name}]`)
-        .setAttribute('disabled', '')
+          .querySelector(`link[data-id=${name}]`)
+          .setAttribute('disabled', '')
     }
 
     /**

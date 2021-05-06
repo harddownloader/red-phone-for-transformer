@@ -2,9 +2,11 @@
 import SimpleBar from 'simplebar'
 import 'simplebar/dist/simplebar.css'
 
-import { AddClass } from '../lib/classControl'
-import { FX } from '../lib/fadeInFadeOut'
-import { BuildPhone } from './Builder'
+import {AddClass} from '../lib/classControl'
+import {FX} from '../lib/fadeInFadeOut'
+import {BuildPhone} from './Builder'
+import {ComputedProperties} from './ComputedProperties'
+
 
 import '../lib/timerHub'
 
@@ -25,18 +27,69 @@ export class Chating {
    * @param {*} time 
    * @param {*} dialog 
    */
-  createMessageHtmlItem(appIcon, time, dialog) {
-    const MessageHtmlItem =
-      appIcon +
-      '\n' +
-      '<div class="item">\n' +
-      '<div class="message-date">' +
-      time +
-      '</div>\n' +
-      '<div class="chat-message">' +
-      dialog +
-      '</div>\n' +
-      '</div>'
+  createMessageHtmlItem(appIcon, time, dialog, typeSet) {
+    const frag = document.createDocumentFragment()
+
+    const messageWrap = document.createElement('div')
+    messageWrap.classList.add('item')
+
+    const messageDate = document.createElement('div')
+    messageDate.classList.add('message-date')
+    // const timeTextNode = document.createTextNode(time)
+    messageDate.innerHTML = time
+
+    const messageContent = document.createElement('div')
+    messageContent.classList.add('chat-message')
+    const paddingOffestHeight = Math.round(new ComputedProperties().displayElements().messagePaddings.paddingOffestHeight)
+    const paddingOffestWeight = Math.round(new ComputedProperties().displayElements().messagePaddings.paddingOffestWeight)
+    messageContent.style.padding = 
+      paddingOffestHeight + 'px ' +
+      paddingOffestWeight + 'px'
+    
+      console.log('createMessageHtmlItem typeSet', typeSet)
+    if (typeSet === 'customer') {
+      const appMsgBorderRadiusFirst = Math.round(new ComputedProperties().displayElements().messageBorderRadius.first)
+      const appMsgBorderRadiusRest = Math.round(new ComputedProperties().displayElements().messageBorderRadius.rest)
+      messageContent.style.borderRadius = 
+        appMsgBorderRadiusFirst + 'px ' +
+        appMsgBorderRadiusRest + 'px ' +
+        appMsgBorderRadiusRest + 'px ' +
+        appMsgBorderRadiusRest + 'px'
+
+    } else if (typeSet === 'company') {
+      const userMsgBorderRadiusFirst = Math.round(new ComputedProperties().displayElements().messageBorderRadius.first)
+      const userMsgBorderRadiusRest = Math.round(new ComputedProperties().displayElements().messageBorderRadius.rest)
+      messageContent.style.borderRadius = 
+        userMsgBorderRadiusRest + 'px ' +
+        userMsgBorderRadiusFirst + 'px ' +
+        userMsgBorderRadiusRest + 'px ' +
+        userMsgBorderRadiusRest + 'px'
+    }
+
+    messageContent.innerHTML = dialog
+
+    messageWrap.appendChild(messageDate)
+    messageWrap.appendChild(messageContent)
+
+    console.log('appIcon', appIcon)
+    console.log('appIcon type', typeof appIcon)
+    frag.appendChild(appIcon)
+    frag.appendChild(messageWrap)
+
+    const MessageHtmlItem = frag 
+
+
+    // const MessageHtmlItem =
+    //   appIcon +
+    //   '\n' +
+    //   '<div class="item">\n' +
+    //   '<div class="message-date">' +
+    //   time +
+    //   '</div>\n' +
+    //   '<div class="chat-message">' +
+    //   dialog +
+    //   '</div>\n' +
+    //   '</div>'
 
     return MessageHtmlItem
   }
@@ -47,24 +100,83 @@ export class Chating {
    */
   getAvatar(typeSet) {
     let AppIcon
+
+    const messageLogoTopMargin = Math.round(new ComputedProperties().displayElements().messageLogoTopMargin)
+    const messageLogoLeftOrRightMargin = Math.round(new ComputedProperties().displayElements().messageLogoLeftOrRightMargin)
+
     if (typeSet == 'customer') {
+      const avatarWrap = document.createElement('div')
+      avatarWrap.classList.add('item')
+
+      const avatarIconWrap = document.createElement('div')
+      avatarIconWrap.classList.add('chat-icon')
+      avatarIconWrap.style.marginTop = 
+        messageLogoTopMargin + 'px'
+      avatarIconWrap.style.marginRight = 
+        messageLogoLeftOrRightMargin + 'px'
+
+      const avatarIcon = document.createElement('img')
+      avatarIcon.setAttribute('src', 'assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png')
+      avatarIcon.setAttribute('width', '30')
+
+      avatarIconWrap.appendChild(avatarIcon)
+      avatarWrap.appendChild(avatarIconWrap)
+
+      AppIcon = avatarWrap
+
       // is app
-      AppIcon =
-        '<div class="item">\n' +
-        '<div class="chat-icon"><img width="30" src="assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png"></div>\n' +
-        '</div>'
+      // AppIcon =
+      //   '<div class="item">\n' +
+      //   '<div class="chat-icon"><img width="30" src="assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png"></div>\n' +
+      //   '</div>'
+
     } else if (typeSet == 'company') {
+      const avatarWrap = document.createElement('div')
+      avatarWrap.classList.add('item')
+
+      const avatarIconWrap = document.createElement('div')
+      avatarIconWrap.classList.add('chat-icon')
+      avatarIconWrap.style.marginTop = 
+        messageLogoTopMargin + 'px'
+      avatarIconWrap.style.marginLeft = 
+        messageLogoLeftOrRightMargin + 'px'
+
+      const avatarIconPicture = document.createElement('picture')
+      
+      const avatarIconSourceWebp = document.createElement('source')
+      avatarIconSourceWebp.setAttribute('srcset', 'assets/img/userAvatar2_red.webp')
+      avatarIconSourceWebp.setAttribute('type', 'image/webp')
+
+      const avatarIconSourcePng = document.createElement('source')
+      avatarIconSourcePng.setAttribute('srcset', 'assets/img/userAvatar2_red.png')
+      avatarIconSourcePng.setAttribute('type', 'image/png')
+
+      const avatarIconImg = document.createElement('img')
+      avatarIconImg.setAttribute('src', 'assets/img/userAvatar2_red.png')
+      avatarIconImg.setAttribute('width', '25px')
+
+      avatarIconPicture.appendChild(avatarIconSourceWebp)
+      avatarIconPicture.appendChild(avatarIconSourcePng)
+      avatarIconPicture.appendChild(avatarIconImg)
+      console.log('avatarIconPicture', avatarIconPicture)
+      avatarIconWrap.appendChild(avatarIconPicture)
+      console.log('avatarIconWrap', avatarIconWrap)
+      avatarWrap.appendChild(avatarIconWrap)
+      console.log('avatarWrap', avatarWrap)
+
+      AppIcon = avatarWrap
+
       // is user
-      AppIcon =
-        '<div class="item">\n' +
-        '<div class="chat-icon">\n' +
-          '<picture>\n' +
-          '<source srcset="assets/img/userAvatar2_red.webp" type="image/webp">\n' +
-          '<source srcset="assets/img/userAvatar2_red.png" type="image/png"> \n' +
-          '<img src="assets/img/userAvatar2_red.png" width="25px">\n' +
-        '</picture>\n' +
-        '</div>\n' +
-        '</div>'
+      // AppIcon =
+      //   '<div class="item">\n' +
+      //   '<div class="chat-icon">\n' +
+      //     '<picture>\n' +
+      //     '<source srcset="assets/img/userAvatar2_red.webp" type="image/webp">\n' +
+      //     '<source srcset="assets/img/userAvatar2_red.png" type="image/png"> \n' +
+      //     '<img src="assets/img/userAvatar2_red.png" width="25px">\n' +
+      //   '</picture>\n' +
+      //   '</div>\n' +
+      //   '</div>'
     }
 
     return AppIcon
@@ -76,7 +188,7 @@ export class Chating {
    */
   checkAllLastedAsOld() {
     const allLastedBtns = document.querySelectorAll(
-      '.chat_options button.option_btn.choose.lasted'
+        '.chat_options button.option_btn.choose.lasted'
     )
     allLastedBtns.forEach((element) => {
       element.classList.remove('lasted')
@@ -182,10 +294,10 @@ export class Chating {
    * @param {*} options 
    */
   buildMessage(
-    from,
-    dialog,
-    time,
-    options,
+      from,
+      dialog,
+      time,
+      options,
   ) {
     var msg_list = document.getElementsByClassName('chatContentWrapper')
 
@@ -196,27 +308,34 @@ export class Chating {
 
     // получаем кнопки да,нет(для app)
     options_html_container = this.generatorOptions(
-      typeSet,
-      options_html_container,
-      options
+        typeSet,
+        options_html_container,
+        options
     )
     // получаем аватарку(для user,app)
     const appIcon = this.getAvatar(typeSet)
+    // console.log('buildMessage appIcon', appIcon)
     var container = document.createElement('div')
     container.classList.add('chat-column', typeSet)
 
     container.style.opacity = '0'
+    // css properties for future msg item
+    const messageMarginBottom = Math.round(new ComputedProperties().displayElements().messageMarginBottom)
+    container.style.marginBottom = messageMarginBottom + 'px'
 
-    const content = this.createMessageHtmlItem(appIcon, time, dialog)
 
-    container.innerHTML = content
+
+    const content = this.createMessageHtmlItem(appIcon, time, dialog, typeSet)
+
+    // container.innerHTML = content
+    container.appendChild(content)
     msg_list[0].appendChild(container)
     var chat_columns = document.querySelectorAll('.chat-column')
 
     var count = chat_columns.length - 1
     new FX().fadeIn(chat_columns[count], {
       duration: 1000,
-      complete: function () {
+      complete: function() {
         // console.log('Complete')
       },
     })
@@ -226,7 +345,7 @@ export class Chating {
       var options_wrapper = document.querySelectorAll('.options_wrapper')
       new FX().fadeIn(options_wrapper[options_wrapper.length - 1], {
         duration: 1000,
-        complete: function () {
+        complete: function() {
           // console.log('Complete')
         },
       })
@@ -245,15 +364,15 @@ export class Chating {
       await timeout(25)
 
       let scrollTopOld = document.querySelector('.simplebar-content-wrapper')
-        .scrollTop
+          .scrollTop
       document.querySelector('.simplebar-content-wrapper').scrollTop =
         5 + scrollTopOld
       let getCurrentScrollTop = document.querySelector(
-        '.simplebar-content-wrapper'
+          '.simplebar-content-wrapper'
       ).scrollTop
 
       let scrollElList = document.querySelectorAll(
-        '.simplebar-track.simplebar-vertical'
+          '.simplebar-track.simplebar-vertical'
       )
       let isShowScroll = false
       if (scrollElList.length === 2) {
@@ -297,7 +416,7 @@ export class Chating {
    */
   setForWriter() {
     document.querySelector('#writer').textContent = document.querySelector(
-      '#setter'
+        '#setter'
     ).value
   }
 
@@ -387,7 +506,7 @@ export class Chating {
       }
     } else if (typeof text === 'object') {
       const btnOptionChooseList = document.querySelectorAll(
-        'button.option_btn.choose.lasted'
+          'button.option_btn.choose.lasted'
       )
       let value = text[0]
       AddClass(btnOptionChooseList[value], 'act_btn')
@@ -402,12 +521,12 @@ export class Chating {
           document.querySelector('.sendText').style.opacity = '0'
           localStorage.setItem('textHeigthForDetectNewLine', '0')
           localStorage.setItem(
-            'textHeigthForDetectNewLine__numberCounterStartingSecondLine',
-            '0'
+              'textHeigthForDetectNewLine__numberCounterStartingSecondLine',
+              '0'
           )
           localStorage.setItem(
-            'textHeigthForDetectNewLine__numberCounterStartingThirdLine',
-            '0'
+              'textHeigthForDetectNewLine__numberCounterStartingThirdLine',
+              '0'
           )
 
           // перевод поля с режима "placeholder" к режиму печати
@@ -418,22 +537,21 @@ export class Chating {
         } else if (a === 1) {
           // eslint-disable-next-line prefer-const
           let getHeightTextInINput = document.querySelector('#writer')
-            .offsetHeight
+              .offsetHeight
           localStorage.setItem(
-            'textHeigthForDetectNewLine',
-            getHeightTextInINput
+              'textHeigthForDetectNewLine',
+              getHeightTextInINput
           )
         } else {
           let getHeightTextInINput = document.querySelector('#writer')
-            .offsetHeight
+              .offsetHeight
           // console.log('getHeightTextInINput', getHeightTextInINput)
           let getHeightTextInINputLasted = localStorage.getItem(
-            'textHeigthForDetectNewLine'
+              'textHeigthForDetectNewLine'
           )
 
           const getterWidth = document.querySelector('#getter').offsetWidth
           const setterWidth = document.querySelector('#writer').offsetWidth
-
 
           
           if (
@@ -451,21 +569,21 @@ export class Chating {
               lineHeigthThisLine + lineHeigthAndPOGRESHNOST
 
             const countLocalStorage2 = localStorage.getItem(
-              'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
+                'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
             )
             const countLocalStorage3 = localStorage.getItem(
-              'textHeigthForDetectNewLine__numberCounterStartingThirdLine'
+                'textHeigthForDetectNewLine__numberCounterStartingThirdLine'
             )
 
             let CounerForRmSymbolsStr = Number(
-              localStorage.getItem(
-                'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
-              )
+                localStorage.getItem(
+                    'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
+                )
             )
             let savedTxtInField = document.querySelector('#writer')
                 .textContent
             let obrazanayaSrokaPoSimwoly = savedTxtInField.slice(
-              CounerForRmSymbolsStr
+                CounerForRmSymbolsStr
             )
             // console.log('obrazanayaSrokaPoSimwoly' , obrazanayaSrokaPoSimwoly)
             // console.log('то что нужно', obrazanayaSrokaPoSimwoly.substring(1))
@@ -473,20 +591,19 @@ export class Chating {
             this.setForWriter()
 
             if (raznica > otlichitelnoeChislo && countLocalStorage3 == '0' && false) {
-              
               // то это 3й цикл( так как на 1м 2числа равны,2м разница около 20, 3м около 40)
               let CounerForRmSymbolsStr = Number(
-                localStorage.getItem(
-                  'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
-                )
+                  localStorage.getItem(
+                      'textHeigthForDetectNewLine__numberCounterStartingSecondLine'
+                  )
               )
               let savedTxtInField = document.querySelector('#writer')
-                .textContent
+                  .textContent
 
               let obrazanayaSrokaPoSimwoly = savedTxtInField.slice(
-                CounerForRmSymbolsStr
+                  CounerForRmSymbolsStr
               )
-              console.log('obrazanayaSrokaPoSimwoly' , obrazanayaSrokaPoSimwoly)
+              console.log('obrazanayaSrokaPoSimwoly', obrazanayaSrokaPoSimwoly)
               console.log('то что нужно', obrazanayaSrokaPoSimwoly.substring(1))
               this.setForSetterOnly(obrazanayaSrokaPoSimwoly.substring(1))
               this.setForWriter()
@@ -522,8 +639,8 @@ export class Chating {
             ) {
               // это 2я линия, и это первое назначение
               localStorage.setItem(
-                'textHeigthForDetectNewLine__numberCounterStartingSecondLine',
-                a
+                  'textHeigthForDetectNewLine__numberCounterStartingSecondLine',
+                  a
               )
             }
           }
@@ -552,14 +669,14 @@ export class Chating {
    * @param {*} simplebar 
    */
   async preBuildMessageUser(
-    a,
-    text,
-    timeTimeout,
-    delay,
-    dialogs,
-    i_forTimer,
-    description,
-    simplebar
+      a,
+      text,
+      timeTimeout,
+      delay,
+      dialogs,
+      i_forTimer,
+      description,
+      simplebar
   ) {
     const timeout = (ms) =>
       new Promise((resolve) =>
@@ -576,7 +693,7 @@ export class Chating {
         var text_dialog
         if (typeof dialogs[i_forTimer].text === 'object') {
           const btnOptionChooseList = document.querySelectorAll(
-            'button.option_btn.choose.lasted'
+              'button.option_btn.choose.lasted'
           )
           let preTextDialog =
             btnOptionChooseList[dialogs[i_forTimer].text[0]].textContent
@@ -590,23 +707,23 @@ export class Chating {
           options = dialogs[i_forTimer].options
 
         new Chating().buildMessage(
-          from,
-          text_dialog,
-          time,
-          options,
+            from,
+            text_dialog,
+            time,
+            options,
         )
       } else {
         // ЗАПОЛНИЛИ ЛИ МЫ ПОЛЕ - НЕТ
         await vm.chatinUserAnimation(a, text, timeTimeout, delay)
         await vm.preBuildMessageUser(
-          (a = text.length),
-          text,
-          timeTimeout,
-          delay,
-          dialogs,
-          i_forTimer,
-          description,
-          simplebar
+            (a = text.length),
+            text,
+            timeTimeout,
+            delay,
+            dialogs,
+            i_forTimer,
+            description,
+            simplebar
         )
       }
       resolve()
@@ -625,13 +742,13 @@ export class Chating {
    * @param {*} simplebar 
    */
   async preBuildMessageApp(
-    text,
-    timeTimeout,
-    delay,
-    dialogs,
-    i_forTimer,
-    description,
-    simplebar
+      text,
+      timeTimeout,
+      delay,
+      dialogs,
+      i_forTimer,
+      description,
+      simplebar
   ) {
     const timeout = (ms) =>
       new Promise((resolve) =>
@@ -648,10 +765,10 @@ export class Chating {
       options = dialogs[i_forTimer].options
 
     new Chating().buildMessage(
-      from,
-      text_dialog,
-      time,
-      options,
+        from,
+        text_dialog,
+        time,
+        options,
     )
 
     return
@@ -670,8 +787,8 @@ export class Chating {
       timeTimeout = 0
     const vm = this
 
-    var timerFunc = function (i_forTimer) {
-      return async function () {
+    var timerFunc = function(i_forTimer) {
+      return async function() {
         if (i_forTimer >= dialogs.length) return
         // ТЕЛО
         console.log('turn no. ' + i_forTimer)
@@ -681,7 +798,7 @@ export class Chating {
         var description = dialogs[i_forTimer].descr
         let fullTimeMessage = dialogs[i_forTimer].time
         let time = fullTimeMessage.substring(
-          fullTimeMessage.lastIndexOf(' ') + 1
+            fullTimeMessage.lastIndexOf(' ') + 1
         )
 
         // задержка появления сообщения
@@ -692,25 +809,25 @@ export class Chating {
         let who = dialogs[i_forTimer].from
         if (who === 'user') {
           await vm.preBuildMessageUser(
-            a,
-            text,
-            timeTimeout,
-            delay,
-            dialogs,
-            i_forTimer,
-            description,
-            simplebar
+              a,
+              text,
+              timeTimeout,
+              delay,
+              dialogs,
+              i_forTimer,
+              description,
+              simplebar
           )
         } else if (who === 'app') {
           // clearTimeout(Timeout)
           await vm.preBuildMessageApp(
-            text,
-            timeTimeout,
-            delay,
-            dialogs,
-            i_forTimer,
-            description,
-            simplebar
+              text,
+              timeTimeout,
+              delay,
+              dialogs,
+              i_forTimer,
+              description,
+              simplebar
           )
         }
         a = 0

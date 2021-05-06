@@ -1,7 +1,8 @@
 // @//ts-check
-import { ConvertTools } from './core.js'
+import {ConvertTools} from './core.js'
 import configJS from './config'
-import { getPhoneHTML } from './createHTML'
+import {getPhoneHTML} from './createHTML'
+import {ComputedProperties} from './ComputedProperties'
 
 /**
  * класс для сборки макета анимации,
@@ -11,33 +12,33 @@ import { getPhoneHTML } from './createHTML'
 export class BuildPhone {
   constructor(argsForBuilder) {
     this.argsForBuilder = argsForBuilder
-    this.height = this.getHW().height // wrapper_phone
-    this.width = this.getHW().width // wrapper_phone
-    this.phoneDisplayHeight = this.phone_display().height
-    this.phoneDisplayWidth = this.phone_display().width
+    this.height = new ComputedProperties().getHW().height // wrapper_phone
+    this.width = new ComputedProperties().getHW().width // wrapper_phone
+    this.phoneDisplayHeight = new ComputedProperties().phone_display().height
+    this.phoneDisplayWidth = new ComputedProperties().phone_display().width
 
     this.marginsForPhoneDisplay = {
-      marginTop: this.phone_display().margins.marginTop.toString(),
-      marginRight: this.phone_display().margins.marginRight.toString(),
-      marginBottom: this.phone_display().margins.marginBottom.toString(),
-      marginLeft: this.phone_display().margins.marginLeft.toString(),
+      marginTop: new ComputedProperties().phone_display().margins.marginTop.toString(),
+      marginRight: new ComputedProperties().phone_display().margins.marginRight.toString(),
+      marginBottom: new ComputedProperties().phone_display().margins.marginBottom.toString(),
+      marginLeft: new ComputedProperties().phone_display().margins.marginLeft.toString(),
     }
 
     this.paddingsForPhoneDisplay = {
-      paddingTop: this.phone_display().paddings.paddingTop.toString(),
-      paddingRight: this.phone_display().paddings.paddingRight.toString(),
-      paddingBottom: this.phone_display().paddings.paddingBottom.toString(),
-      paddingLeft: this.phone_display().paddings.paddingLeft.toString(),
+      paddingTop: new ComputedProperties().phone_display().paddings.paddingTop.toString(),
+      paddingRight: new ComputedProperties().phone_display().paddings.paddingRight.toString(),
+      paddingBottom: new ComputedProperties().phone_display().paddings.paddingBottom.toString(),
+      paddingLeft: new ComputedProperties().phone_display().paddings.paddingLeft.toString(),
     }
 
-    this.chatHeaderWrapperHeight = this.displayElements().topHeaderHeight
+    this.chatHeaderWrapperHeight = new ComputedProperties().displayElements().topHeaderHeight
 
-    this.chatContentHeight = this.displayElements().chatContentHeight // он же и max-height
+    this.chatContentHeight = new ComputedProperties().displayElements().chatContentHeight // он же и max-height
 
     // footer
-    this.chatUiInputHeight = this.displayElements().chatUiInputHeigh
-    this.bottomUiHeight = this.displayElements().bottomUiHeight
-    this.sectionsAppHeight = this.displayElements().sectionsAppHeight
+    this.chatUiInputHeight = new ComputedProperties().displayElements().chatUiInputHeigh
+    this.bottomUiHeight = new ComputedProperties().displayElements().bottomUiHeight
+    this.sectionsAppHeight = new ComputedProperties().displayElements().sectionsAppHeight
 
     this.chatHeaderWrapperOtricatelnueMargins = {
       marginLeft: '-' + this.marginsForPhoneDisplay.marginLeft + 'px',
@@ -71,11 +72,11 @@ export class BuildPhone {
     document.querySelector('.ChatAkcent').classList.add(typeClass)
     // SET CHAT PARAM
     document.querySelector(
-      '.headAndDate__sub_title'
+        '.headAndDate__sub_title'
     ).innerHTML = this.argsForBuilder.headingChat
 
     document.querySelector(
-      '.topHeaderTime'
+        '.topHeaderTime'
     ).innerHTML = this.argsForBuilder.clock
 
     // HEIGHT AND WIDHT
@@ -99,7 +100,7 @@ export class BuildPhone {
     document.querySelector('.chatHeaderWrapper').style.height =
       this.chatHeaderWrapperHeight + 'px'
     
-    //--footer
+    // --footer
     document.querySelector('#chat-ui-input').style.height =
       this.chatUiInputHeight + 'px'
     document.querySelector('.bottom-ui').style.height =
@@ -144,40 +145,40 @@ export class BuildPhone {
     document.querySelector('.phone_display').style.margin = margin_options
 
     document.querySelector(
-      '.chatHeaderWrapper'
+        '.chatHeaderWrapper'
     ).style.marginLeft = this.chatHeaderWrapperOtricatelnueMargins.marginLeft
     document.querySelector(
-      '.chatHeaderWrapper'
+        '.chatHeaderWrapper'
     ).style.marginRight = this.chatHeaderWrapperOtricatelnueMargins.marginRight
 
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
-    // на пока просто не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
+    // на пока просто не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], new ComputedProperties().getHW().height) + 'px'
     const borderRadius =
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px ' +
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px ' +
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px ' +
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px'
     document.querySelector('.ChatAkcent').style.borderRadius = borderRadius
 
     // и для анимации постветки у футера (используется в 3м типе анимации реагирования на ввод пользователя)
     document.querySelector(
-      '.ChatAkcent__FooterOnly'
+        '.ChatAkcent__FooterOnly'
     ).style.borderRadius = borderRadius
   }
 
@@ -187,93 +188,93 @@ export class BuildPhone {
    * при срабатывании события ресайза окна браузера
    */
   ResizeActivator(isChatsList = false) {
-    if(document.querySelector('.chat-list-version')) {
+    if (document.querySelector('.chat-list-version')) {
       isChatsList = true
     }
 
     // HEIGHT AND WIDHT
     document.querySelector('#wrapper_phone').style.width =
-      Math.round(this.getHW().width) + 'px'
-    // console.log(this.getHW().width)
+      Math.round(new ComputedProperties().getHW().width) + 'px'
+    // console.log(new ComputedProperties().getHW().width)
     document.querySelector('#wrapper_phone').style.height =
-      Math.round(this.getHW().height) + 'px'
+      Math.round(new ComputedProperties().getHW().height) + 'px'
 
     document.querySelector('.phone_display').style.height =
-      Math.round(this.phone_display().height) + 'px'
+      Math.round(new ComputedProperties().phone_display().height) + 'px'
     document.querySelector('.phone_display').style.width =
-      Math.round(this.phone_display().width) + 'px'
+      Math.round(new ComputedProperties().phone_display().width) + 'px'
 
     document.querySelector('.chatContent').style.maxHeight =
-      Math.round(this.displayElements(isChatsList).chatContentHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements(isChatsList).chatContentHeight) + 'px'
 
     document.querySelector('.chatHeaderWrapper').style.height =
-      Math.round(this.displayElements(isChatsList).topHeaderHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements(isChatsList).topHeaderHeight) + 'px'
     
     document.querySelector('.topHeaderNetworkWrap__img').style.width =
-      Math.round(this.displayElements().wifiAndBatteryWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().wifiAndBatteryWidth) + 'px'
 
     document.querySelector('.user-control__img.more-btn').style.height =
-      Math.round(this.displayElements().moreBtnHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().moreBtnHeight) + 'px'
 
     document.querySelector('.user-control__img.add-contact-btn').style.height =
-      Math.round(this.displayElements().addContactHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().addContactHeight) + 'px'
     
     document.querySelector('.user-control__img.writing-btn').style.height =
-      Math.round(this.displayElements().writingHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().writingHeight) + 'px'
     
     document.querySelector('.user-options__search .search-input').style.height =
-      Math.round(this.displayElements().searchHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().searchHeight) + 'px'
     
-    //--chat list
+    // --chat list
     if (isChatsList) {
       // chat item
       document.querySelectorAll('.chat-item').forEach(item => {
-        item.style.height = Math.round(this.displayElements(isChatsList).chatItemHeight) + 'px'
+        item.style.height = Math.round(new ComputedProperties().displayElements(isChatsList).chatItemHeight) + 'px'
       })
       // chat item img
       document.querySelectorAll('.chat-item .chat__avatar').forEach(item => {
-        item.style.height = Math.round(this.displayElements(isChatsList).chatItemImgHeight) + 'px'
-        item.style.width = Math.round(this.displayElements(isChatsList).chatItemImgHeight) + 'px'
+        item.style.height = Math.round(new ComputedProperties().displayElements(isChatsList).chatItemImgHeight) + 'px'
+        item.style.width = Math.round(new ComputedProperties().displayElements(isChatsList).chatItemImgHeight) + 'px'
       })
       // section app icons
       document.querySelectorAll('.sections-app__item .section_img').forEach(item => {
-        item.style.height = Math.round(this.displayElements(isChatsList).sectionsAppIconsHeight) + 'px'
+        item.style.height = Math.round(new ComputedProperties().displayElements(isChatsList).sectionsAppIconsHeight) + 'px'
       })
     }
     
-    //--header
+    // --header
     document.querySelector('.chatHeader__logo').style.width =
-      Math.round(this.displayElements().headerLogoWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().headerLogoWidth) + 'px'
     document.querySelector('.chatHeader__back_btn').style.width =
-      Math.round(this.displayElements().headerBackBtnWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().headerBackBtnWidth) + 'px'
 
       
-    //--footer
+    // --footer
     document.querySelector('#chat-ui-input').style.height =
-      Math.round(this.displayElements(isChatsList).chatUiInputHeigh) + 'px'
+      Math.round(new ComputedProperties().displayElements(isChatsList).chatUiInputHeigh) + 'px'
     document.querySelector('.bottom-ui').style.height =
-      Math.round(this.displayElements(isChatsList).bottomUiHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements(isChatsList).bottomUiHeight) + 'px'
     document.querySelector('.sections-app-wrapp').style.height =
-      Math.round(this.displayElements(isChatsList).sectionsAppHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements(isChatsList).sectionsAppHeight) + 'px'
     document.querySelector('.bottom-ui__phone_line').style.width =
-      Math.round(this.displayElements().bottomLineWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().bottomLineWidth) + 'px'
     document.querySelector('.chatSend').style.width =
-      Math.round(this.displayElements().userInputWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().userInputWidth) + 'px'
     document.querySelector('.chatSend').style.height =
-      Math.round(this.displayElements().userInputHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
     document.querySelector('.input-element.attach-wrap').style.width =
-      Math.round(this.displayElements().bottomIconAddFileWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().bottomIconAddFileWidth) + 'px'
     document.querySelector('.input-element.gallery-wrap').style.width =
-      Math.round(this.displayElements().bottomIconGalleryWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().bottomIconGalleryWidth) + 'px'
     document.querySelector('.input-element.micro-wrap').style.width =
-      Math.round(this.displayElements().bottomIconMicroWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().bottomIconMicroWidth) + 'px'
       
 
     // PADDINGS
-    const display_width_p_top = this.phone_display().paddings.paddingTop.toString()
-    const display_width_p_right = this.phone_display().paddings.paddingRight.toString()
-    const display_width_p_bottom = this.phone_display().paddings.paddingBottom.toString()
-    const display_width_p_left = this.phone_display().paddings.paddingLeft.toString()
+    const display_width_p_top = new ComputedProperties().phone_display().paddings.paddingTop.toString()
+    const display_width_p_right = new ComputedProperties().phone_display().paddings.paddingRight.toString()
+    const display_width_p_bottom = new ComputedProperties().phone_display().paddings.paddingBottom.toString()
+    const display_width_p_left = new ComputedProperties().phone_display().paddings.paddingLeft.toString()
 
     const padding_options =
       display_width_p_top +
@@ -287,22 +288,33 @@ export class BuildPhone {
 
     document.querySelector('.phone_display').style.padding = padding_options
 
-    //--top header
+    document.querySelector('.chatContentWrapper').style.padding = Math.round(new ComputedProperties().displayElements().chatContentWrapperPeddings) + 'px'
+
+    // --top header
     document.querySelector('.chatTopHeaderContainer').style.paddingTop = 
-      Math.round(this.displayElements().topHeaderPaddings.paddingTop) + 'px'
+      Math.round(new ComputedProperties().displayElements().topHeaderPaddings.paddingTop) + 'px'
     document.querySelector('.chatTopHeaderContainer').style.paddingRight = 
-      Math.round(this.displayElements().topHeaderPaddings.paddingRight) + 'px'
+      Math.round(new ComputedProperties().displayElements().topHeaderPaddings.paddingRight) + 'px'
     document.querySelector('.chatTopHeaderContainer').style.paddingLeft = 
-      Math.round(this.displayElements().topHeaderPaddings.paddingLeft) + 'px'
+      Math.round(new ComputedProperties().displayElements().topHeaderPaddings.paddingLeft) + 'px'
     document.querySelector('.chatTopHeaderContainer').style.paddingBottom = 
-      Math.round(this.displayElements().topHeaderPaddings.paddingBottom) + 'px'
+      Math.round(new ComputedProperties().displayElements().topHeaderPaddings.paddingBottom) + 'px'
+
+    // --messages
+    const paddingOffestHeight = Math.round(new ComputedProperties().displayElements().messagePaddings.paddingOffestHeight)
+    const paddingOffestWeight = Math.round(new ComputedProperties().displayElements().messagePaddings.paddingOffestWeight)
+    document.querySelectorAll('.chatContent .chat-column > .item > .chat-message').forEach(chat => {
+      chat.style.padding = 
+        paddingOffestHeight + 'px ' +
+        paddingOffestWeight + 'px'
+    })
     
     
     // MARGINS
-    const display_width_m_top = this.phone_display().margins.marginTop.toString()
-    const display_width_m_right = this.phone_display().margins.marginRight.toString()
-    const display_width_m_bottom = this.phone_display().margins.marginBottom.toString()
-    const display_width_m_left = this.phone_display().margins.marginLeft.toString()
+    const display_width_m_top = new ComputedProperties().phone_display().margins.marginTop.toString()
+    const display_width_m_right = new ComputedProperties().phone_display().margins.marginRight.toString()
+    const display_width_m_bottom = new ComputedProperties().phone_display().margins.marginBottom.toString()
+    const display_width_m_left = new ComputedProperties().phone_display().margins.marginLeft.toString()
 
     const margin_options =
       display_width_m_top +
@@ -316,57 +328,79 @@ export class BuildPhone {
 
     document.querySelector('.phone_display').style.margin = margin_options
 
-    //--header
+    // --header
     document.querySelector(
-      '.chatHeaderWrapper'
-    ).style.marginLeft = this.phone_display().margins.marginLeft.toString()
+        '.chatHeaderWrapper'
+    ).style.marginLeft = new ComputedProperties().phone_display().margins.marginLeft.toString()
 
     document.querySelector(
-      '.chatHeaderWrapper'
-    ).style.marginRight = this.phone_display(isChatsList).margins.marginRight.toString()
+        '.chatHeaderWrapper'
+    ).style.marginRight = new ComputedProperties().phone_display(isChatsList).margins.marginRight.toString()
 
     document.querySelector('.user-options__options').style.marginLeft =
-      Math.round(this.displayElements().userOptionsOffests.marginLeft) + 'px'
+      Math.round(new ComputedProperties().displayElements().userOptionsOffests.marginLeft) + 'px'
     
     document.querySelector('.user-options__options').style.marginRight =
-      Math.round(this.displayElements().userOptionsOffests.marginRight) + 'px'
+      Math.round(new ComputedProperties().displayElements().userOptionsOffests.marginRight) + 'px'
     
     document.querySelector('.chatHeader__back_btn').style.marginLeft =
-      Math.round(this.displayElements().leftHeaderOffestWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().leftHeaderOffestWidth) + 'px'
     document.querySelector('.headAndDate__head').style.marginRight =
-      Math.round(this.displayElements().rightHeaderOffestWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().rightHeaderOffestWidth) + 'px'
     document.querySelector('.chatHeader__logo').style.marginLeft =
-      Math.round(this.displayElements().leftLogoOffsetWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().leftLogoOffsetWidth) + 'px'
     document.querySelector('.chatHeader__logo').style.marginRight =
-      Math.round(this.displayElements().rightLogoOffsetWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().rightLogoOffsetWidth) + 'px'
+
+    // --messages
+    const messageMarginBottom = Math.round(new ComputedProperties().displayElements().messageMarginBottom)
+    document.querySelectorAll('.chatContent .chat-column').forEach(chat => {
+      chat.style.marginBottom = 
+        messageMarginBottom + 'px'
+    })
+    const messageLogoTopMargin = Math.round(new ComputedProperties().displayElements().messageLogoTopMargin)
+    document.querySelectorAll('.chatContent .chat-column > .item > .chat-icon').forEach(chat => {
+      chat.style.marginTop = 
+        messageLogoTopMargin + 'px'
+    })
     
-    //--footer
+    const messageLogoLeftOrRightMargin = Math.round(new ComputedProperties().displayElements().messageLogoLeftOrRightMargin)
+    document.querySelectorAll('.chatContent .chat-column.company > .item > .chat-icon').forEach(chat => {
+      chat.style.marginLeft = 
+        messageLogoLeftOrRightMargin + 'px'
+    })
+    document.querySelectorAll('.chatContent .chat-column.customer > .item > .chat-icon').forEach(chat => {
+      chat.style.marginRight = 
+        messageLogoLeftOrRightMargin + 'px'
+    })
+    
+    // --footer
     document.querySelector('.input-element.attach-wrap').style.marginLeft =
-      Math.round(this.displayElements().bottomOffsetWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().bottomOffsetWidth) + 'px'
     document.querySelector('.input-element.gallery-wrap').style.marginLeft =
-      Math.round(this.displayElements().bottomOffsetWidth) + 'px'  
+      Math.round(new ComputedProperties().displayElements().bottomOffsetWidth) + 'px'  
     document.querySelector('.input-element.micro-wrap').style.marginLeft =
-      Math.round(this.displayElements().bottomOffsetWidth) + 'px'  
+      Math.round(new ComputedProperties().displayElements().bottomOffsetWidth) + 'px'  
     document.querySelector('.chatSend').style.marginLeft =
-      Math.round(this.displayElements().bottomOffsetWidth) + 'px'  
+      Math.round(new ComputedProperties().displayElements().bottomOffsetWidth) + 'px'  
     document.querySelector('.chatSend').style.marginRight =
-      Math.round(this.displayElements().bottomOffsetWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().bottomOffsetWidth) + 'px'
     
     
     // line height
     document.querySelector('.chatSend__TextAndSend').style.lineHeight =
-      Math.round(this.displayElements().userInputHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
     document.querySelector('.sendText').style.lineHeight =
-      Math.round(this.displayElements().userInputHeight) + 'px'
+      Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
     
     // background size
     document.querySelector('.sendText-wrap').style.backgroundSize =
-      Math.round(this.displayElements().userInputBgWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().userInputBgWidth) + 'px'
     document.querySelector('.sendText').style.backgroundSize =
-      Math.round(this.displayElements().userInputBgWidth) + 'px'
+      Math.round(new ComputedProperties().displayElements().userInputBgWidth) + 'px'
     
     // font size
-    const userInputFontSize = Math.round(this.displayElements().userInputHeight) / 2
+    const userInputFontSize = Math.round(new ComputedProperties().displayElements().userInputHeight) / 2
     document.querySelector('.sendText').style.fontSize =
       userInputFontSize + 'px'
     document.querySelector('#writer').style.fontSize =
@@ -375,36 +409,61 @@ export class BuildPhone {
       userInputFontSize + 'px'
       
 
+    // border radius
+    // --app msg
+    const appMsgBorderRadiusFirst = Math.round(new ComputedProperties().displayElements().messageBorderRadius.first)
+    const appMsgBorderRadiusRest = Math.round(new ComputedProperties().displayElements().messageBorderRadius.rest)
+
+    document.querySelectorAll('.chatContent .customer.chat-column > .item > .chat-message').forEach(chat => {
+      chat.style.borderRadius = 
+        appMsgBorderRadiusFirst + 'px ' +
+        appMsgBorderRadiusRest + 'px ' +
+        appMsgBorderRadiusRest + 'px ' +
+        appMsgBorderRadiusRest + 'px'
+    })
+
+    // --user msg
+    const userMsgBorderRadiusFirst = Math.round(new ComputedProperties().displayElements().messageBorderRadius.first)
+    const userMsgBorderRadiusRest = Math.round(new ComputedProperties().displayElements().messageBorderRadius.rest)
+    document.querySelectorAll('.chatContent .company.chat-column > .item > .chat-message').forEach(chat => {
+      chat.style.borderRadius = 
+        userMsgBorderRadiusRest + 'px ' +
+        userMsgBorderRadiusFirst + 'px ' +
+        userMsgBorderRadiusRest + 'px ' +
+        userMsgBorderRadiusRest + 'px'
+    })
+    
+
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
-    // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
+    // пока что не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], new ComputedProperties().getHW().height) + 'px'
     // для блока теней (анимация для привлечения внимания на поле ввода в момент печати текста)
-    // на пока просто не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], this.getHW().height) + 'px'
+    // на пока просто не нужно document.querySelector('.ChatAkcent').style.height = new ConvertTools().convert_percents_to_px(configJS['ChatAkcentPercentage'], new ComputedProperties().getHW().height) + 'px'
     const borderRadius =
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px ' +
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px ' +
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px ' +
       new ConvertTools().convert_percents_to_px(
-        configJS['ChatAkcentBorderRadiusPercentage'],
-        this.getHW().width
+          configJS['ChatAkcentBorderRadiusPercentage'],
+          new ComputedProperties().getHW().width
       ) +
       'px'
     document.querySelector('.ChatAkcent').style.borderRadius = borderRadius
 
     // и для анимации постветки у футера (используется в 3м типе анимации реагирования на ввод пользователя)
     document.querySelector(
-      '.ChatAkcent__FooterOnly'
+        '.ChatAkcent__FooterOnly'
     ).style.borderRadius = borderRadius
   }
 
@@ -415,330 +474,6 @@ export class BuildPhone {
     const date = this.argsForBuilder.dateChatingInHeader
     document.querySelector('.date_dialogs_item').textContent = date
     return
-  }
-
-  /**
-   * возвращает объект с нужными высотами частей анимации
-   */
-  displayElements(isChatsList = false) {
-    // console.log('displayElements', isChatsList)
-    if(document.querySelector('.chat-list-version')) {
-      isChatsList = true
-    }
-
-    const height_ = this.getHW().height
-    const width_ = this.getHW().width
-
-    const topHeaderHeigthInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? configJS['topHeaderHeightPercentage__chatList'] : configJS['topHeaderPercentage']
-          // console.log('needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      leftHeaderOffestWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['leftHeaderOffestWidthPercentage'],
-        width_
-      ),
-      rightHeaderOffestWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['rightHeaderOffestWidthPercentage'],
-        width_
-      ),
-      leftLogoOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['leftLogoOffsetWidthPercentage'],
-        width_
-      ),
-      rightLogoOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['rightLogoOffsetWidthPercentage'],
-        width_
-      ),
-      headerLogoWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['headerLogoWidthPercentage'],
-        width_
-      ),
-      headerBackBtnWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['headerBackBtnWidthPercentage'],
-        width_
-      ),
-      chatUiInputHeightInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? 0 : configJS['chatUiInputHeightPercentage']
-          // console.log('needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      userInputWidthInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? 0 : configJS['userInputWidthPercentage']
-          // console.log('needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        width_
-      ),
-      userInputHeightInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? 0 : configJS['userInputHeightPercentage']
-          // console.log('needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      userInputBgWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['userInputBgWidthPercentage'],
-        width_
-      ),
-      bottomOffsetWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['bottomOffsetWidthPercentage'],
-        width_
-      ),
-      bottomIconAddFileWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['bottomIconAddFileWidthPercentage'],
-        width_
-      ),
-      bottomIconGalleryWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['bottomIconGalleryWidthPercentage'],
-        width_
-      ),
-      bottomIconMicroWidthInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['bottomIconMicroWidthPercentage'],
-        width_
-      ),
-      bottomUiHeightInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? 0 : configJS['bottomUiHeightPercentage']
-          // console.log('needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      bottomLineWidthInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? 0 : configJS['bottomLineWidthPercentage']
-          // console.log('needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        width_
-      ),
-      sectionsAppHeightInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? configJS['sectionsAppHeightPercentage'] : 0
-          // console.log('sectionsAppHeightInConfig needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      sectionsAppIconsHeightInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = configJS['sectionsAppIconsHeightPercentage']
-          // console.log('sectionsAppIconsHeightInConfig needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      chatItemImgHeightInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = isChatsList ? configJS['chatItemImgHeightPercentage'] : 0
-          // console.log('chatItemImgHeightInConfig needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        height_
-      ),
-      wifiAndBatteryWidthInConfig = new ConvertTools().convert_percents_to_px(
-        (() => {
-          const needPercentage = configJS['wifiAndBatteryWidthPercentage']
-          // console.log('wifiAndBatteryWidthInConfig needPercentage', needPercentage)
-          return needPercentage
-        })(),
-        width_
-      ),
-      moreBtnHeightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['moreBtnHeightPercentage'],
-        height_
-      ),
-      addContactHeightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['addContactHeightPercentage'],
-        height_
-      ),
-      writingHeightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['writingHeightPercentage'],
-        height_
-      ),
-      userOptionsMarginRightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['userOptionsOffestsPercentage']['marginRight'],
-        width_
-      ),
-      userOptionsMarginLeftInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['userOptionsOffestsPercentage']['marginLeft'],
-        width_
-      ),
-      topHeaderPaddingTopInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['topHeaderPaddingsPercentage']['paddingTop'],
-        height_
-      ),
-      topHeaderPaddingRightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['topHeaderPaddingsPercentage']['paddingRight'],
-        width_
-      ),
-      topHeaderPaddingLeftInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['topHeaderPaddingsPercentage']['paddingLeft'],
-        width_
-      ),
-      topHeaderPaddingBottomInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['topHeaderPaddingsPercentage']['paddingBottom'],
-        height_
-      ),
-      searchHeightInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['searchHeightPercentage'],
-        height_
-      ),
-      // sums margins and paddings
-      sumMarginsTopBottom =
-        parseInt(this.phone_display().margins.marginTop.toString()) +
-        parseInt(this.phone_display().margins.marginBottom.toString()),
-      sumPaddingsTopBottom =
-        parseInt(this.phone_display().paddings.paddingTop.toString()) +
-        parseInt(this.phone_display().paddings.paddingBottom.toString()),
-      chatBordersTopBottom = 6,
-      sumHeaderFooterOffsets =
-        topHeaderHeigthInConfig +
-        chatUiInputHeightInConfig +
-        bottomUiHeightInConfig +
-        sectionsAppHeightInConfig +
-        sumMarginsTopBottom +
-        sumPaddingsTopBottom +
-        chatBordersTopBottom,
-      chatContentHeight = height_ - sumHeaderFooterOffsets,
-      chatListMarginsTopBottom = 10,
-      chatItemHeight = (chatContentHeight - chatListMarginsTopBottom) / 8
-
-    const parameters_elements = {
-      topHeaderHeight: topHeaderHeigthInConfig,
-      leftHeaderOffestWidth: leftHeaderOffestWidthInConfig,
-      rightHeaderOffestWidth: rightHeaderOffestWidthInConfig,
-      leftLogoOffsetWidth: leftLogoOffsetWidthInConfig,
-      rightLogoOffsetWidth: rightLogoOffsetWidthInConfig,
-      headerLogoWidth: headerLogoWidthInConfig,
-      headerBackBtnWidth: headerBackBtnWidthInConfig,
-      chatUiInputHeigh: chatUiInputHeightInConfig,
-      userInputWidth: userInputWidthInConfig,
-      userInputHeight: userInputHeightInConfig,
-      userInputBgWidth: userInputBgWidthInConfig,
-      bottomOffsetWidth: bottomOffsetWidthInConfig,
-      bottomIconAddFileWidth: bottomIconAddFileWidthInConfig,
-      bottomIconGalleryWidth: bottomIconGalleryWidthInConfig,
-      bottomIconMicroWidth: bottomIconMicroWidthInConfig,
-      bottomUiHeight: bottomUiHeightInConfig,
-      bottomLineWidth: bottomLineWidthInConfig,
-      sectionsAppHeight: sectionsAppHeightInConfig,
-      chatContentHeight: chatContentHeight,
-      sumPaddingsTopBottom: sumPaddingsTopBottom,
-      sumMarginsTopBottom: sumMarginsTopBottom,
-      chatItemHeight: chatItemHeight,
-      chatItemImgHeight: chatItemImgHeightInConfig,
-      wifiAndBatteryWidth: wifiAndBatteryWidthInConfig,
-      sectionsAppIconsHeight: sectionsAppIconsHeightInConfig,
-      moreBtnHeight: moreBtnHeightInConfig,
-      addContactHeight: addContactHeightInConfig,
-      writingHeight: writingHeightInConfig,
-      userOptionsOffests: {
-        marginRight: userOptionsMarginRightInConfig,
-        marginLeft: userOptionsMarginLeftInConfig
-      },
-      topHeaderPaddings: {
-        paddingTop: topHeaderPaddingTopInConfig,
-        paddingRight: topHeaderPaddingRightInConfig,
-        paddingLeft: topHeaderPaddingLeftInConfig,
-        paddingBottom: topHeaderPaddingBottomInConfig
-      },
-      searchHeight: searchHeightInConfig,
-    }
-
-    console.log('height_', height_)
-    console.log('parameters_elements', parameters_elements)
-
-    return parameters_elements
-  }
-
-  /**
-   * возвращает высоту, ширину, отступы для контейнера анимации
-   */
-  phone_display() {
-    const height = this.getHW().height
-    const widht = this.getHW().width
-    const marginsParam = configJS['marginsInPercentsForPhoneDisplay']
-    const marginTop = marginsParam.marginTop,
-      marginRight = marginsParam.marginRight,
-      marginBottom = marginsParam.marginBottom,
-      marginLeft = marginsParam.marginLeft
-    const SumMarginsLeftRight = marginLeft + marginRight
-    const SumMarginsTopBottom = marginTop + marginBottom // 0 + 10% of img in px
-
-    const paddingsParam = configJS['paddingsInPercentsForPhoneDisplay']
-
-    const paddingTop = new ConvertTools().convert_percents_to_px(paddingsParam.paddingTop, widht),
-      paddingRight = new ConvertTools().convert_percents_to_px(paddingsParam.paddingRight, widht),
-      paddingBottom = new ConvertTools().convert_percents_to_px(paddingsParam.paddingBottom, widht),
-      paddingLeft = new ConvertTools().convert_percents_to_px(paddingsParam.paddingLeft, widht)
-
-      
-    // const SumPaddingsLeftRight = paddingLeft + paddingRight
-    // const SumPaddingsTopBottom = paddingTop + paddingBottom
-    // поставили border-box, теперь не нужно высчитывать с paddings, поэтому ставим их по 0м
-    const SumPaddingsLeftRight = 0
-    const SumPaddingsTopBottom = 0
-
-    const PDHeight = height - SumMarginsTopBottom - SumPaddingsTopBottom
-    const PDWidth = widht - SumMarginsLeftRight - SumPaddingsLeftRight
-
-    const parameters_display = {
-      width: PDWidth,
-      height: PDHeight,
-      margins: {
-        marginTop: marginTop,
-        marginRight: marginRight,
-        marginBottom: marginBottom,
-        marginLeft: marginLeft,
-      },
-      paddings: {
-        paddingTop: paddingTop,
-        paddingRight: paddingRight,
-        paddingBottom: paddingBottom,
-        paddingLeft: paddingLeft,
-      },
-    }
-
-    return parameters_display
-  }
-
-  /**
-   * высчитывает и отдает высоту и ширину анимации
-   */
-  getHW() {
-    var windowHeight = window.innerHeight
-
-    if (windowHeight < 400) {
-      windowHeight = 400
-    }
-    var tallage = 100 - configJS['marginsSumTopBottomInPercentsWindowAnimation'] // 100% - 10%(отступы по 5%) = 90%
-    var heightPhone = (windowHeight / 100) * tallage // вычисление процентов
-    var widthPhone = heightPhone / 2.04999
-
-    const offsetHeightPx = 2 // it's 3 px
-    const offsetWidthPx = 0 // it's 3px
-
-    heightPhone = heightPhone - offsetHeightPx
-    widthPhone = widthPhone - offsetWidthPx
-
-    const parameters = {
-      // тут самое главное это сохранение пропорций, НУЖНО написать код на пропорции - Ширина к Высоте
-      windowHeigth: window.innerHeight,
-      width: widthPhone,
-      height: heightPhone,
-      coefficientForCurrentImg: 2.038, // разница сторон картинки(высоты к ширине)
-    }
-    return parameters
   }
 
   /**

@@ -47,14 +47,27 @@ export default {
   chatItemImgHeightPercentage: 6.94,
 
   // chating
-  //--chating header
+  // --chating header
   leftHeaderOffestWidthPercentage: 5,
   rightHeaderOffestWidthPercentage: 1.25,
   leftLogoOffsetWidthPercentage: 3.75,
   rightLogoOffsetWidthPercentage: 1.25,
   headerLogoWidthPercentage: 6.75,
   headerBackBtnWidthPercentage: 2.4,
-  //--chating footer
+  // --content (messages)
+  chatContentWrapperPeddingsPercentage: 5,
+  messageMarginBottomPercentage: 1.12,
+  messageLogoTopMarginPercentage: 0.35,
+  messageLogoLeftOrRightMarginPercentage: 2.28,
+  messagePaddingsPercentage: {
+    paddingOffestHeight: 1.12,
+    paddingOffestWeight: 3.41,
+  },
+  messageBorderRadiusPercentage: {
+    first: 0.72,
+    rest: 4.8
+  },
+  // --chating footer
   chatUiInputHeightPercentage: 5.63,
   bottomUiHeightPercentage: 1.88,
   bottomLineWidthPercentage: 29.5,

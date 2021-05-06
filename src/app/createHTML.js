@@ -21,11 +21,11 @@ function getPathToHtmlFile() {
  * @param {*} url 
  */
 export function getPhoneHTML(url = getPathToHtmlFile()) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest()
     xhr.open('get', url, true)
     xhr.responseType = 'document'
-    xhr.onload = function () {
+    xhr.onload = function() {
       var status = xhr.status
       if (status == 200) {
         resolve(xhr.response.documentElement.innerHTML)

@@ -1,5 +1,5 @@
 // список чатов
-import { Chating } from './Chating' // на постройку механики обмена сообщениями
+import {Chating} from './Chating' // на постройку механики обмена сообщениями
 
 
 export class ChatsList {
@@ -9,7 +9,7 @@ export class ChatsList {
     this.needChatItemId = '.need-item'
   }
 
-  init (bp, dialogs) {
+  init(bp, dialogs) {
     this.bp = bp
     this.dialogs = dialogs
     // show html
@@ -24,9 +24,7 @@ export class ChatsList {
       setTimeout(() => {
         this.destroy()
       }, 300)
-      
     })
-    
   }
 
   create() {
@@ -44,22 +42,22 @@ export class ChatsList {
     //  через время активируем диалог, как буд-то произошел клик
     setTimeout(() => {
       // document.querySelector(this.needChatItemId).click()
-    }, 1000)
+    }, 2000)
   }
 
-  runTransitionAnimation () {
+  runTransitionAnimation() {
     console.log('runAnimation')
     setTimeout(() => {
       document.querySelector('.chatContentWrapper').classList.toggle('activeChat')
     }, 400)
   }
 
-  async runChatingAnimation () {
+  async runChatingAnimation() {
     await this.bp.setTimeChating() // ставим заголовочное время диалога
     await new Chating().CreateAnimationChating(this.dialogs) // создание анимации переписки
   }
 
-  destroy () {
+  destroy() {
     console.log('destroyChatsList')
     document.querySelector('.chat-list-version').classList.toggle('chat-list-version')
     document.querySelector('.chatContent').classList.toggle('whiteBg')
@@ -78,7 +76,6 @@ export class ChatsList {
 
     // ставим пропорции для чата
     this.bp.ResizeActivator()
-
     
 
     // start chating...

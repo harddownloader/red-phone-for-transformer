@@ -4,23 +4,23 @@
  */
 window.timerHub = {
   timers: {},
-  setTimeout: function (groupName, fn, time) {
+  setTimeout: function(groupName, fn, time) {
     groupName = groupName || '@'
     var timer = setTimeout(fn, time)
     // console.log(this.timers)
     if (!Object.prototype.hasOwnProperty.call(this.timers, groupName)) {
-      this.timers[groupName] = { isStopped: false, list: [] }
+      this.timers[groupName] = {isStopped: false, list: []}
     }
     this.timers[groupName].list.push(timer)
   },
-  isStopped: function (groupName) {
+  isStopped: function(groupName) {
     groupName = groupName || '@'
     if (!Object.prototype.hasOwnProperty.call(this.timers, groupName)) {
       return true
     }
     return this.timers[groupName].isStopped
   },
-  stop: function (groupName) {
+  stop: function(groupName) {
     groupName = groupName || '@'
     if (!Object.prototype.hasOwnProperty.call(this.timers, groupName)) {
       return
