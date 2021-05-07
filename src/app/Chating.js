@@ -116,7 +116,7 @@ export class Chating {
         messageLogoLeftOrRightMargin + 'px'
 
       const avatarIcon = document.createElement('img')
-      avatarIcon.setAttribute('src', 'assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png')
+      avatarIcon.setAttribute('src', 'chats/assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png')
       avatarIcon.setAttribute('width', '30')
 
       avatarIconWrap.appendChild(avatarIcon)
@@ -127,7 +127,7 @@ export class Chating {
       // is app
       // AppIcon =
       //   '<div class="item">\n' +
-      //   '<div class="chat-icon"><img width="30" src="assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png"></div>\n' +
+      //   '<div class="chat-icon"><img width="30" src="chats/assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png"></div>\n' +
       //   '</div>'
 
     } else if (typeSet == 'company') {
@@ -144,15 +144,15 @@ export class Chating {
       const avatarIconPicture = document.createElement('picture')
       
       const avatarIconSourceWebp = document.createElement('source')
-      avatarIconSourceWebp.setAttribute('srcset', 'assets/img/userAvatar2_red.webp')
+      avatarIconSourceWebp.setAttribute('srcset', 'chats/assets/img/userAvatar2_red.webp')
       avatarIconSourceWebp.setAttribute('type', 'image/webp')
 
       const avatarIconSourcePng = document.createElement('source')
-      avatarIconSourcePng.setAttribute('srcset', 'assets/img/userAvatar2_red.png')
+      avatarIconSourcePng.setAttribute('srcset', 'chats/assets/img/userAvatar2_red.png')
       avatarIconSourcePng.setAttribute('type', 'image/png')
 
       const avatarIconImg = document.createElement('img')
-      avatarIconImg.setAttribute('src', 'assets/img/userAvatar2_red.png')
+      avatarIconImg.setAttribute('src', 'chats/assets/img/userAvatar2_red.png')
       avatarIconImg.setAttribute('width', '25px')
 
       avatarIconPicture.appendChild(avatarIconSourceWebp)
@@ -171,9 +171,9 @@ export class Chating {
       //   '<div class="item">\n' +
       //   '<div class="chat-icon">\n' +
       //     '<picture>\n' +
-      //     '<source srcset="assets/img/userAvatar2_red.webp" type="image/webp">\n' +
-      //     '<source srcset="assets/img/userAvatar2_red.png" type="image/png"> \n' +
-      //     '<img src="assets/img/userAvatar2_red.png" width="25px">\n' +
+      //     '<source srcset="chats/assets/img/userAvatar2_red.webp" type="image/webp">\n' +
+      //     '<source srcset="chats/assets/img/userAvatar2_red.png" type="image/png"> \n' +
+      //     '<img src="chats/assets/img/userAvatar2_red.png" width="25px">\n' +
       //   '</picture>\n' +
       //   '</div>\n' +
       //   '</div>'
@@ -221,22 +221,27 @@ export class Chating {
             '<span>.XLSX</span>' +
             '<span>.CSV</span>' +
             '</div>' +
-            '<div class="grid">' +
-            '<span><strong>Номер счета</strong></span>' +
-            '<span><strong>Статус платежа</strong></span>' +
-            '<span><strong>Дата оплаты</strong></span>' +
-            '<span><strong>Сумма оплаты</strong></span>' +
-            '<span><strong>Валюта оплаты</strong></span>' +
-            '<span>187</span>' +
-            '<span>Включен в график платежей</span>' +
-            '<span></span>' +
-            '<span>100000.00</span>' +
-            '<span>RUB</span>' +
-            '<span>266</span>' +
-            '<span>Оплачен</span>' +
-            '<span>18.06.2020</span>' +
-            '<span>20250.00</span>' +
-            '<span>RUB</span>' +
+            '<div class="grid two_rows">' +
+            '<span><strong>Наименование</strong></span>' +
+            '<span><strong>Значение</strong></span>' +
+            '<span>ФИО</span>' +
+            '<span>Иванов Петр Иванович</span>' +
+            '<span>Подразделение</span>' +
+            '<span>Отдел продаж</span>' +
+            '<span>Должность</span>' +
+            '<span>Менеджер</span>' +
+            '<span>Оплата по окладу</span>' +
+            '<span>30 000</span>' +
+            '<span>Надбавка за квалификаци</span>' +
+            '<span>5000</span>' +
+            '<span>Премия месячная</span>' +
+            '<span>10000</span>' +
+            '<span>Отпускные</span>' +
+            '<span>25000</span>' +
+            '<span>Больничные</span>' +
+            '<span>5000</span>' +
+            '<span class="without_border">Всего начислено</span>' +
+            '<span class="without_border">45000</span>' +
             '</div>' +
             '</div>'
           options_html_container.innerHTML = options_html_content
