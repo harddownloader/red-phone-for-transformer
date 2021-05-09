@@ -41,7 +41,7 @@ export class ChatsList {
 
     //  через время активируем диалог, как буд-то произошел клик
     setTimeout(() => {
-      // document.querySelector(this.needChatItemId).click()
+      document.querySelector(this.needChatItemId).click()
     }, 2000)
   }
 

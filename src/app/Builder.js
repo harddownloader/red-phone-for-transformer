@@ -392,6 +392,8 @@ export class BuildPhone {
       Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
     document.querySelector('.sendText').style.lineHeight =
       Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
+    document.querySelector('#writer').style.lineHeight =
+      Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
     
     // background size
     document.querySelector('.sendText-wrap').style.backgroundSize =
