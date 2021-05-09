@@ -528,7 +528,6 @@ export class Chating {
     }
 
     if (text === 'Да' || text === 'Нет') {
-      // 'Нет' на всякий для будущих правок приписан
       if (text === 'Да') {
         // когда мы ответам да (на выбор да.нет)
         const btn_option_choose = document.querySelectorAll('button.option_btn')
