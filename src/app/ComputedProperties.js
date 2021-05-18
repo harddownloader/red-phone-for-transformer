@@ -281,8 +281,36 @@ export class ComputedProperties {
           width_
       ),
       chatContentWrapperPeddingsInConfig = new ConvertTools().convert_percents_to_px(
-        configJS['chatContentWrapperPeddingsPercentage'],
-        width_
+          configJS['chatContentWrapperPeddingsPercentage'],
+          width_
+      ),
+      headAndDate__arrowWidthInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['headAndDate__arrowWidthPercentage'],
+          width_
+      ),
+      chatIconImgWidthInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['chatIconImgWidthPercentage'],
+          width_
+      ),
+      headAndDate__headFontSizeInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['headAndDate__headFontSizePercentage'],
+          height_
+      ),
+      date_dialogs_itemFontSizeInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['date_dialogs_itemFontSizePercentage'],
+          height_
+      ),
+      messageDateFontSizeInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['messageDateFontSizePercentage'],
+          height_
+      ),
+      chatMessageFontSizeInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['chatMessageFontSizePercentage'],
+          height_
+      ),
+      chatMessageLineHeightInConfig = new ConvertTools().convert_percents_to_px(
+          configJS['chatMessageLineHeightPercentage'],
+          height_
       ),
       // sums margins and paddings
       sumMarginsTopBottom =
@@ -350,6 +378,13 @@ export class ComputedProperties {
         rest: messageBorderRadiusRestInConfig
       },
       chatContentWrapperPeddings: chatContentWrapperPeddingsInConfig,
+      headAndDate__arrowWidth: headAndDate__arrowWidthInConfig,
+      chatIconImgWidth: chatIconImgWidthInConfig,
+      headAndDate__headFontSize: headAndDate__headFontSizeInConfig,
+      date_dialogs_itemFontSize: date_dialogs_itemFontSizeInConfig,
+      messageDateFontSize: messageDateFontSizeInConfig,
+      chatMessageFontSize: chatMessageFontSizeInConfig,
+      chatMessageLineHeight: chatMessageLineHeightInConfig,
       // footer
       userInputWidth: userInputWidthInConfig,
       userInputHeight: userInputHeightInConfig,

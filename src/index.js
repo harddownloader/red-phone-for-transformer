@@ -114,6 +114,8 @@ require('./styles/stylus/main.styl')
         // чистим html и приводим все в первоначальный вид
         document.body.removeChild(document.getElementById('master-container'))
         document.body.removeChild(document.getElementById('overlay'))
+
+        // localStorage.removeItem('currentAnimationDialog');
       })
     }
 

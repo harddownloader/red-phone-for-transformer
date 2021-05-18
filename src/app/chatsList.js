@@ -12,6 +12,14 @@ export class ChatsList {
   init(bp, dialogs) {
     this.bp = bp
     this.dialogs = dialogs
+
+    // set current dialog to LS
+    if (!localStorage.getItem('currentAnimationDialog')) {
+      localStorage.setItem('currentAnimationDialog', JSON.stringify(dialogs))
+    } else {
+      this.hideChatListHtml()
+    }
+
     // show html
     this.create()
     // wait click event
@@ -19,7 +27,7 @@ export class ChatsList {
     document.querySelector(this.needChatItemId).addEventListener('click', (event) => {
       console.log('click to need item')
       document.querySelector(this.needChatItemId).classList.toggle('active')
-      
+
       // rm chats list
       setTimeout(() => {
         this.destroy()
@@ -39,17 +47,34 @@ export class ChatsList {
     const isChatsList = true
     this.bp.ResizeActivator(isChatsList)
 
+    let delayBafereClickOnChatListItem = 2000
+
+    if (localStorage.getItem('currentAnimationDialog')) {
+      delayBafereClickOnChatListItem = 0
+    }
+
     //  через время активируем диалог, как буд-то произошел клик
     setTimeout(() => {
-      document.querySelector(this.needChatItemId).click()
-    }, 2000)
+      if (document.querySelector(this.needChatItemId)) {
+        document.querySelector(this.needChatItemId).click()
+      }
+    }, delayBafereClickOnChatListItem)
   }
 
   runTransitionAnimation() {
     console.log('runAnimation')
+
+    let delayTransitionAnimationFromChatListToChat = 400
+
+    if (localStorage.getItem('currentAnimationDialog')) {
+      delayTransitionAnimationFromChatListToChat = 0
+    }
+
     setTimeout(() => {
-      document.querySelector('.chatContentWrapper').classList.toggle('activeChat')
-    }, 400)
+      if (document.querySelector('.chatContentWrapper')) {
+        document.querySelector('.chatContentWrapper').classList.toggle('activeChat')
+      }
+    }, delayTransitionAnimationFromChatListToChat)
   }
 
   async runChatingAnimation() {
@@ -57,19 +82,27 @@ export class ChatsList {
     await new Chating().CreateAnimationChating(this.dialogs) // создание анимации переписки
   }
 
+  hideChatListHtml() {
+    document.querySelector('.chats-list').style.display = 'none'
+    document.querySelector('.sections-app-wrapp').style.display = 'none'
+    document.querySelector('.app-header').style.display = 'none'
+  }
+
   destroy() {
     console.log('destroyChatsList')
     document.querySelector('.chat-list-version').classList.toggle('chat-list-version')
     document.querySelector('.chatContent').classList.toggle('whiteBg')
     document.querySelector('.chatContent').classList.toggle('grayBg')
-    document.querySelector('.chats-list').style.display = 'none'
+    
+    this.hideChatListHtml()
+
     document.querySelector('.chatHeader').style.display = 'flex'
     document.querySelector('.chatContentWrapper').style.display = 'block'
     document.querySelector('#chat-ui-input').style.display = 'flex'
     document.querySelector('.bottom-ui').style.display = 'flex'
 
-    document.querySelector('.sections-app-wrapp').style.display = 'none'
-    document.querySelector('.app-header').style.display = 'none'
+    // document.querySelector('.sections-app-wrapp').style.display = 'none'
+    // document.querySelector('.app-header').style.display = 'none'
 
     // run animation redirect to chat
     this.runTransitionAnimation()

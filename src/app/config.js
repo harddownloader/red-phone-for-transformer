@@ -67,6 +67,17 @@ export default {
     first: 0.72,
     rest: 4.8
   },
+  headAndDate__arrowWidthPercentage: 3.05,
+  chatIconImgWidthPercentage: 6.71,
+  // ----font-sizes && line-heights
+  headAndDate__headFontSizePercentage: 2,
+  // headAndDate__sub_titleFontSizePercentage
+  // headAndDate__sub_titleLineHeightPercentage
+  date_dialogs_itemFontSizePercentage: 1.64,
+  messageDateFontSizePercentage: 1.64,
+  chatMessageFontSizePercentage: 2,
+  chatMessageLineHeightPercentage: 2.56,
+
   // --chating footer
   chatUiInputHeightPercentage: 5.63,
   bottomUiHeightPercentage: 1.88,

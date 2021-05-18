@@ -247,7 +247,14 @@ export class BuildPhone {
       Math.round(new ComputedProperties().displayElements().headerLogoWidth) + 'px'
     document.querySelector('.chatHeader__back_btn').style.width =
       Math.round(new ComputedProperties().displayElements().headerBackBtnWidth) + 'px'
+    document.querySelector('.headAndDate__arrow').style.width =
+      Math.round(new ComputedProperties().displayElements().headAndDate__arrowWidth) + 'px'
 
+    // --messages
+    document.querySelectorAll('.chat-icon img').forEach(item => {
+      item.style.width = Math.round(new ComputedProperties().displayElements().chatIconImgWidth) + 'px'
+    })
+    
       
     // --footer
     document.querySelector('#chat-ui-input').style.height =
@@ -266,7 +273,10 @@ export class BuildPhone {
       Math.round(new ComputedProperties().displayElements().bottomIconAddFileWidth) + 'px'
     document.querySelector('.input-element.gallery-wrap').style.width =
       Math.round(new ComputedProperties().displayElements().bottomIconGalleryWidth) + 'px'
+    
     document.querySelector('.input-element.micro-wrap').style.width =
+      Math.round(new ComputedProperties().displayElements().bottomIconMicroWidth) + 'px'
+    document.querySelector('.input-element.micro-wrap img.micro').style.height =
       Math.round(new ComputedProperties().displayElements().bottomIconMicroWidth) + 'px'
       
 
@@ -394,7 +404,18 @@ export class BuildPhone {
       Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
     document.querySelector('#writer').style.lineHeight =
       Math.round(new ComputedProperties().displayElements().userInputHeight) + 'px'
+
+    document.querySelectorAll('.chat-message').forEach(chat => {
+      chat.style.lineHeight = 
+        Math.round(new ComputedProperties().displayElements().chatMessageLineHeight) + 'px'
+    })
+    document.querySelector('.headAndDate__head').style.lineHeight =
+      Math.round(new ComputedProperties().displayElements().headAndDate__headFontSize) + 'px'
+    document.querySelectorAll('.headAndDate__sub_title').forEach(item => {
+      item.style.lineHeight = Math.round(new ComputedProperties().displayElements().messageDateFontSize) + 'px'
+    })
     
+
     // background size
     document.querySelector('.sendText-wrap').style.backgroundSize =
       Math.round(new ComputedProperties().displayElements().userInputBgWidth) + 'px'
@@ -409,6 +430,27 @@ export class BuildPhone {
       userInputFontSize + 'px'
     document.querySelector('#cursor').style.fontSize =
       userInputFontSize + 'px'
+    
+    document.querySelector('.headAndDate__head').style.fontSize =
+      Math.round(new ComputedProperties().displayElements().headAndDate__headFontSize) + 'px'
+    document.querySelector('.date_dialogs_item').style.fontSize =
+      Math.round(new ComputedProperties().displayElements().date_dialogs_itemFontSize) + 'px'
+
+
+    document.querySelectorAll('.message-date').forEach(date => {
+      date.style.fontSize = 
+        Math.round(new ComputedProperties().displayElements().messageDateFontSize) + 'px'
+    })
+    document.querySelectorAll('.chat-message').forEach(chat => {
+      chat.style.fontSize = 
+      Math.round(new ComputedProperties().displayElements().chatMessageFontSize) + 'px'
+    })
+    document.querySelectorAll('.option_btn').forEach(item => {
+      item.style.fontSize = Math.round(new ComputedProperties().displayElements().chatMessageFontSize) + 'px'
+    })
+    document.querySelectorAll('.headAndDate__sub_title').forEach(item => {
+      item.style.fontSize = Math.round(new ComputedProperties().displayElements().messageDateFontSize) + 'px'
+    })
       
 
     // border radius
