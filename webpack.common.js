@@ -120,8 +120,12 @@ module.exports = {
 			},
 			{
 				test: /\.svg$/,
-				//	type: 'asset/resource',
-				use: ['@svgr/webpack'],
+				loader: 'url-loader',
+        // include: path.join(__dirname, ''),
+        options: {
+          publicPath: './',
+          limit: 10000,
+        },
 			},
 		],
 	},
