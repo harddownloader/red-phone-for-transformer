@@ -6,7 +6,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 
 const TerserJSPlugin = require('terser-webpack-plugin') // min js
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // min css
+// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // min css
 
 const autoprefixer = require('autoprefixer-stylus')
 
@@ -39,7 +39,7 @@ module.exports = {
   entry: ['@babel/polyfill', './index.js'],
   mode: 'development', // uncompress
   output: {
-    filename: 'bundle.[hash].js', // 'build.js',
+    filename: 'bundle.[contenthash].js', // 'build.js',
     path: path.resolve(__dirname, 'dist'),
   },
   optimization: {
@@ -92,8 +92,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: devMode ? 'style.css' : 'style.[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+      filename: devMode ? 'style.css' : 'style.[contenthash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css',
     }),
   ],
   module: {
