@@ -111,8 +111,12 @@ module.exports = {
 				type: 'asset',
 			},
 			{
-				test: /\.(ttf|woff|woff2|eot)$/,
-				type: 'asset/resource',
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        loader: 'url-loader',
+				options: {
+          publicPath: './',
+          limit: 10000,
+        },
 			},
 			{
 				test: /\.svg$/,
