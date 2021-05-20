@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const autoprefixer = require('autoprefixer-stylus')
+const CopyPlugin = require('copy-webpack-plugin')
 
 
 module.exports = {
@@ -33,6 +34,25 @@ module.exports = {
 			// template: './public/index.html',
 			// favicon: './public/favicon.ico',
 		}),
+		new CopyPlugin({
+      patterns: [
+        {
+          // imgs
+          from: path.resolve(__dirname, 'src/chats/assets/img'),
+          to: 'chats/assets/img',
+        },
+        {
+          // html
+          from: path.resolve(__dirname, 'src/chats/assets/html'),
+          to: 'chats/assets/html',
+        },
+        {
+          // fonts
+          from: path.resolve(__dirname, 'src/chats/assets/fonts'),
+          to: 'chats/assets/fonts',
+        },
+      ],
+    }),
 	],
 	module: {
 		rules: [
