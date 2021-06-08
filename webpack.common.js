@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const dotenv = require('dotenv')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const autoprefixer = require('autoprefixer-stylus')
 const CopyPlugin = require('copy-webpack-plugin')
 
 
@@ -27,7 +26,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env': JSON.stringify(dotenv.config().parsed), // it will automatically pick up key values from .env file
 		}),
-		new MiniCssExtractPlugin(),
+		// new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.pug'),
 			// filename: 'index.html',
@@ -72,29 +71,6 @@ module.exports = {
 					},
 				},
 			},
-      {
-        test: /\.styl$/,
-        use: [
-          {
-            loader: 'style-loader', // creates style nodes from JS strings
-          },
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-							esModule: false,
-							publicPath: '/dist'
-						},
-          },
-          { loader: 'css-loader' },
-          // {loader: 'stylus-loader'},
-          {
-            loader: 'stylus-loader', // compiles Stylus to CSS
-            options: {
-              // use: [autoprefixer()],
-            },
-          },
-        ],
-      },
       {
         test: /\.pug$/,
         loader: 'pug-loader',

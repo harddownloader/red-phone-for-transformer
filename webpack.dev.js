@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
@@ -24,6 +25,12 @@ module.exports = merge(common, {
 		new ESLintPlugin({
 			extensions: ['.js', 'jsx'],
 		}),
+		new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: 'style.css' ,
+      chunkFilename: '[id].css',
+    }),
 	],
 	module: {
 		rules: [
@@ -31,6 +38,24 @@ module.exports = merge(common, {
 				test: /\.(sa|sc|c)ss$/,
 				use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
 			},
+			{
+        test: /\.styl$/i,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "stylus-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
 		],
 	},
 })
