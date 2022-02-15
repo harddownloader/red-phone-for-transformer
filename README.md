@@ -1,1 +1,1 @@
-# mob-red-phone-for-transformer
+# VK Assistent blue phone
