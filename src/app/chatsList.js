@@ -25,7 +25,7 @@ export class ChatsList {
     // wait click event
     // const needChatItemId = '.need-item'
     document.querySelector(this.needChatItemId).addEventListener('click', (event) => {
-      console.log('click to need item')
+      // console.log('click to need item')
       document.querySelector(this.needChatItemId).classList.toggle('active')
 
       // rm chats list
@@ -36,7 +36,7 @@ export class ChatsList {
   }
 
   create() {
-    console.log('createChatsList')
+    // console.log('createChatsList')
     
     document.querySelector('.chatHeader').style.display = 'none'
     document.querySelector('.chatContentWrapper').style.display = 'none'
@@ -62,7 +62,7 @@ export class ChatsList {
   }
 
   runTransitionAnimation() {
-    console.log('runAnimation')
+    // console.log('runAnimation')
 
     let delayTransitionAnimationFromChatListToChat = 400
 
@@ -89,7 +89,7 @@ export class ChatsList {
   }
 
   destroy() {
-    console.log('destroyChatsList')
+    // console.log('destroyChatsList')
     document.querySelector('.chat-list-version').classList.toggle('chat-list-version')
     document.querySelector('.chatContent').classList.toggle('whiteBg')
     document.querySelector('.chatContent').classList.toggle('grayBg')

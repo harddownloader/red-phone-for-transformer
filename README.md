@@ -1,1 +1,1 @@
-# VK Assistent blue phone
+# VK Assistant blue phone

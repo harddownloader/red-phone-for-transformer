@@ -52,7 +52,7 @@ export class Chating {
     messageContent.style.lineHeight = 
       Math.round(new ComputedProperties().displayElements().chatMessageLineHeight) + 'px'
 
-    console.log('createMessageHtmlItem typeSet', typeSet)
+    // console.log('createMessageHtmlItem typeSet', typeSet)
     if (typeSet === 'customer') {
       const appMsgBorderRadiusFirst = Math.round(new ComputedProperties().displayElements().messageBorderRadius.first)
       const appMsgBorderRadiusRest = Math.round(new ComputedProperties().displayElements().messageBorderRadius.rest)
@@ -76,8 +76,8 @@ export class Chating {
     messageWrap.appendChild(messageDate)
     messageWrap.appendChild(messageContent)
 
-    console.log('appIcon', appIcon)
-    console.log('appIcon type', typeof appIcon)
+    // console.log('appIcon', appIcon)
+    // console.log('appIcon type', typeof appIcon)
     frag.appendChild(appIcon)
     frag.appendChild(messageWrap)
 
@@ -122,7 +122,7 @@ export class Chating {
 
       const avatarIcon = document.createElement('img')
       avatarIcon.style.width = Math.round(new ComputedProperties().displayElements().chatIconImgWidth) + 'px'
-      avatarIcon.setAttribute('src', 'chats/assets/img/icons_red_phone_transformer_chat_list/avatarLogo@3x.png')
+      avatarIcon.setAttribute('src', 'chats/assets/img/LogoKubSvg28x28.svg')
       avatarIcon.setAttribute('width', '30')
 
       avatarIconWrap.appendChild(avatarIcon)
@@ -143,16 +143,16 @@ export class Chating {
       const avatarIconPicture = document.createElement('picture')
       
       const avatarIconSourceWebp = document.createElement('source')
-      avatarIconSourceWebp.setAttribute('srcset', 'chats/assets/img/userAvatar2_red.webp')
+      avatarIconSourceWebp.setAttribute('srcset', 'chats/assets/img/userAvatar2_blue.webp')
       avatarIconSourceWebp.setAttribute('type', 'image/webp')
 
       const avatarIconSourcePng = document.createElement('source')
-      avatarIconSourcePng.setAttribute('srcset', 'chats/assets/img/userAvatar2_red.png')
+      avatarIconSourcePng.setAttribute('srcset', 'chats/assets/img/userAvatar2_blue.png')
       avatarIconSourcePng.setAttribute('type', 'image/png')
 
       const avatarIconImg = document.createElement('img')
       avatarIconImg.style.width = Math.round(new ComputedProperties().displayElements().chatIconImgWidth) + 'px'
-      avatarIconImg.setAttribute('src', 'chats/assets/img/userAvatar2_red.png')
+      avatarIconImg.setAttribute('src', 'chats/assets/img/userAvatar2_blue.png')
       avatarIconImg.setAttribute('width', '25px')
 
       avatarIconPicture.appendChild(avatarIconSourceWebp)
@@ -394,7 +394,7 @@ export class Chating {
 
     let fadeInDuration = 1000
 
-    console.log('buildMessage - delay', delay)
+    // console.log('buildMessage - delay', delay)
     if (delay === 0) {
       fadeInDuration = 0
     }
@@ -429,7 +429,7 @@ export class Chating {
           window.timerHub.setTimeout('preBuildMessageApp', resolve, ms)
         )
 
-      console.log('AnimationScrollInRecursion - delayScroll', delayScroll)
+      // console.log('AnimationScrollInRecursion - delayScroll', delayScroll)
 
       let pxToScrollTop = 5
       if (delayScroll !== 0) {
@@ -455,16 +455,16 @@ export class Chating {
         isShowScroll =
           scrollElList[1].style.visibility == 'visible' ? true : false
       }
-      console.log(isShowScroll)
+      // console.log(isShowScroll)
       if (getCurrentScrollTop == scrollTopOld && isShowScroll) {
         // true - значит при нашем движении курсор уперся, значит это конечная точка
         // значит пока его переть дальше
         // clearTimeout(id);
-        console.log('first')
+        // console.log('first')
         return
       } else if (i > 50 && isShowScroll === false) {
         // завершаем если скролла еще нет, чтобы он не разгонялся на ровном месте
-        console.log('reset')
+        // console.log('reset')
         return
       } else {
         // продолжаем переть скролл
@@ -479,7 +479,7 @@ export class Chating {
       if (checkCurrentMessageAsUsed(dialogs, i_forTimer) ) {
         delayScroll = 0
       }
-      console.log('delayScroll', delayScroll)
+      // console.log('delayScroll', delayScroll)
 
       AnimationScrollInRecursion(0, delayScroll)
     }
@@ -799,7 +799,7 @@ export class Chating {
         // ЗАПОЛНИЛИ ЛИ МЫ ПОЛЕ - НЕТ
 
         await vm.chatinUserAnimation(a, text, timeTimeout, delay, dialogs, i_forTimer)
-        console.log('mobile - preBuildMessageUser - before preBuildMessageUser')
+        // console.log('mobile - preBuildMessageUser - before preBuildMessageUser')
         await vm.preBuildMessageUser(
             (a = text.length),
             text,
@@ -902,7 +902,7 @@ export class Chating {
         }
 
         // ТЕЛО
-        console.log('turn no. ' + i_forTimer)
+        // console.log('turn no. ' + i_forTimer)
         var text = null
 
         text = dialogs[i_forTimer].text
@@ -919,7 +919,7 @@ export class Chating {
 
         let who = dialogs[i_forTimer].from
         if (who === 'user') {
-          console.log('mobile - CreateAnimationChating - before preBuildMessageUser')
+          // console.log('mobile - CreateAnimationChating - before preBuildMessageUser')
           await vm.preBuildMessageUser(
               a,
               text,
